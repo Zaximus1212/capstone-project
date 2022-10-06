@@ -20,27 +20,13 @@ const ArrPusher = (orig, added) => {
     orig.push(added)
     return orig
 }
-const allInOne = (str1, str2, type) => {
-    if (type === 'period'){
-        return writerPeriod(ArrPusher(retToArr(str1), str2))
-    }
-    if (type === 'comma'){
-        return writerComma(ArrPusher(retToArr(str1), str2))
-    }
-    if (type === 'space'){
-        return writerSpace(ArrPusher(retToArr(str1), str2))
-    }
-
-
+const allInOnePeriod = (str1, str2, type) => {
+    return writerPeriod(ArrPusher(retToArr(str1), str2))
 }
-const arr3 = "add this in"
-const arr2 = "sup"
-const arr1 = ["hey", "hey how"]
-// const arr3 = arr1.push(arr2)
-// console.log(retToArr(writerPeriod(arr1)))
-// console.log(ArrPusher(retToArr(writerPeriod(arr1)), arr2))
-// console.log(arr3)
-const boom = 'period'
-console.log(allInOne(arr2, arr3, boom))
-console.log(writerPeriod(ArrPusher(retToArr(arr3), arr2)))
-console.log(allInOne((allInOne(arr2, arr3, boom)), boom, 'period'))
+const allInOneComma = (str1, str2, type) => {
+    return writerComma(ArrPusher(retToArr(str1), str2))
+}
+const allInOneSpace = (str1, str2, type) => {
+    return writerSpace(ArrPusher(retToArr(str1), str2))
+}
+
