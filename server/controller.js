@@ -10,7 +10,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
 })
 module.exports = {
-    CreateButton: (req, res) => {
+    createButton: (req, res) => {
         const {name} = req.body
         const {image} = req.body
         const {type} = req.body
@@ -27,8 +27,23 @@ module.exports = {
         const {comment} = req.body
         
         sequelize.query(`
-            INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, meal plan, behavior, comment)
+            INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, meal_plan, behavior, comment)
             VALUES (${name},${image},${type},${skills},${money},${appointments},${integration},${preffered},${interaction},${activities},${food},${mealPlan},${behavior},${comment})
         `)
+    },
+    getButton: (req, res) => {
+        sequelize.query(`
+            SELECT * FROM buttons
+        `)
+        .then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log('error with request from DB', err))
+    },
+    getWriting: (req, res) => {
+        sequelize.query(`
+            SELECT * FROM buttons
+            WHERE button_id = ${button_id}
+        `)
+        .then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log('error getting all the data', err))
     }
 }
