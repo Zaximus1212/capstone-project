@@ -101,15 +101,15 @@ const allInOneSpace = (str1, str2) => {
 
 
 let section = ''
-const appendPeriod = (/*currentSec,*/ sectionText) =>{
-    section = allInOnePeriod(section, sectionText)
-    console.log(section)
-    return section
+const appendPeriod = (currentSec, sectionText) =>{
+    currentSec = allInOnePeriod(currentSec, sectionText)
+    console.log(currentSec)
+    return currentSec
 }
-appendPeriod("1")
-appendPeriod("2")
-appendPeriod("3")
-appendPeriod("4")
+appendPeriod(section,"1")
+// appendPeriod("2")
+// appendPeriod("3")
+// appendPeriod("4")
 
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
