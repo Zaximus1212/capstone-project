@@ -1,5 +1,7 @@
 const form = document.querySelector('form')
 const nameInput = document.querySelector('#name-input')
+const pictureInput = document.querySelector('#picture-input')
+const type = document.querySelector('input[name="type-button"]:checked').value
 const skills = document.querySelector('#skills')
 const moneyManagement = document.querySelector('#money-management')
 const appointments = document.querySelector('#appointments')
@@ -22,20 +24,41 @@ function handleSubmit(e) {
         return
     }
 
-    let type = document.querySelector('input[name="type-button"]:checked').value
     let body = {
-        name: nameInput.value, 
-        type: type, 
         buttonId: +buttonId,
+        name: nameInput.value,
+        pictureInput: pictureInput.value,
+        type: type, 
+        skills: skills.value,
+        moneyManagement: moneyManagement.value,
+        appointments: appointments.value,
+        communityIntegration: communityIntegration.value,
+        preffered: preffered.value,
+        interaction: interaction.value,
+        activities: activities.value,
+        food: food.value,
+        mealPlan: mealPlan.value,
+        behaviors: behaviors.value,
+        comments: comments.value,
 
     }
 
-    axios.post('http://localhost:4004/cities', body)
+    axios.post('http://localhost:4004/buttons', body)
         .then(() => {
-            countrySelect.value = 1
+            document.querySelector('#activities').checked = true
             nameInput.value = ''
-            document.querySelector('#rating-one').checked = true
-            getCities()
+            pictureInput.value = ''
+            skills.value = ''
+            moneyManagement.value = ''
+            appointments.value = ''
+            communityIntegration.value = ''
+            preffered.value = ''
+            interaction.value = ''
+            activities.value = ''
+            food.value = ''
+            mealPlan.value = ''
+            behaviors.value = ''
+            comments.value = ''
         })
 }
 
