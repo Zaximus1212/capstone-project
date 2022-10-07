@@ -31,7 +31,7 @@ module.exports = {
             VALUES (${name},${image},${type},${skills},${money},${appointments},${integration},${preffered},${interaction},${activities},${food},${mealPlan},${behavior},${comment})
         `)
     },
-    getButton: (req, res) => {
+    getButtons: (req, res) => {
         sequelize.query(`
             SELECT * FROM buttons
         `)

@@ -100,24 +100,24 @@ const allInOneSpace = (str1, str2) => {
 
 
 
-let skill = ''
-const runner = skillText =>{
-    skill = allInOnePeriod(skill, skillText)
-    console.log(skill)
-    return skill
+let section = ''
+const appendPeriod = (/*currentSec,*/ sectionText) =>{
+    section = allInOnePeriod(section, sectionText)
+    console.log(section)
+    return section
 }
-runner("1")
-runner("2")
-runner("3")
-runner("4")
+appendPeriod("1")
+appendPeriod("2")
+appendPeriod("3")
+appendPeriod("4")
 
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
 <br>
 <br>
-${skill} <br><br>
-${skill} <br><br>
-${skill} <br><br>
+${section} <br><br>
+${section} <br><br>
+${section} <br><br>
 
 </p>`
 
@@ -138,6 +138,6 @@ ${skill} <br><br>
 // ${food}<br><br>
 // ${mealPlan}<br><br>
 // ${behaviors}<br><br>
-// ${comment}<br><br><br>
-const yo = 1
+// ${comment}<br><br>
+
 form.addEventListener('submit', handleSubmit)
