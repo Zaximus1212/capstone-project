@@ -95,28 +95,32 @@ const allInOneSpace = (str1, str2) => {
     return writerSpace(ArrPusher(retToArr(str1), str2))
 }
 // console.log(allInOnePeriod((allInOnePeriod((allInOnePeriod('hey', 'watch')), 'this')), 'im making a sentence'))
+const returner = ret => {
 
+}
 
 
 
 let section = ''
+let added = ''
 const appendPeriod = (currentSec, sectionText) =>{
     currentSec = allInOnePeriod(currentSec, sectionText)
-    console.log(currentSec)
-    return currentSec
+    added = currentSec
+    console.log(added)
+    return added
 }
+
+appendPeriod(added,"2")
 appendPeriod(section,"1")
-// appendPeriod("2")
 // appendPeriod("3")
 // appendPeriod("4")
 
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
-<br>
-<br>
+<br><br>
+${added} <br><br>
 ${section} <br><br>
-${section} <br><br>
-${section} <br><br>
+${added} <br><br>
 
 </p>`
 

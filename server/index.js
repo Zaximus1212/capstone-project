@@ -1,12 +1,12 @@
-require('dotenv').config()
+// require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
 const SERVER_PORT = 4004
 const {createButton, getButtons, getWriting} = require('./controller.js')
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
 app.post('/button', createButton)
 app.get('/buttons', getButtons)

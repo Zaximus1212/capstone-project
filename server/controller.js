@@ -10,6 +10,30 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
 })
 module.exports = {
+    seed: (req, res)=> {
+        sequelize.query(`
+            CREATE TABLE buttons (
+                type VARCHAR,
+                name VARCHAR,
+                image VARCHAR,
+                skills VARCHAR,
+                money VARCHAR,
+                appointments VARCHAR,
+                integration VARCHAR,
+                preffered VARCHAR,
+                interaction VARCHAR,
+                activities VARCHAR,
+                food VARCHAR,
+                mealPlan VARCHAR,
+                behavior VARCHAR,
+                comment VARCHAR,
+                buttonId SERIAL PRIMARY KEY
+            )
+        `).then(() => {
+            console.log('DB seeded!')
+            res.sendStatus(200)
+        }).catch(err => console.log('error seeding DB', err))
+    },
     createButton: (req, res) => {
         const {type} = req.body
         const {name} = req.body
@@ -29,7 +53,8 @@ module.exports = {
         sequelize.query(`
             INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, meal_plan, behavior, comment)
             VALUES (${name},${image},${type},${skills},${money},${appointments},${integration},${preffered},${interaction},${activities},${food},${mealPlan},${behavior},${comment})
-        `)
+        `).then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log('error with sending to DB', err))
     },
     getButtons: (req, res) => {
         sequelize.query(`
