@@ -99,24 +99,24 @@ const allInOneSpace = (str1, str2) => {
 
 
 
-let skill = ''
-const runner = skillText =>{
-    skill = allInOnePeriod(skill, skillText)
-    console.log(skill)
-    return skill
+let section = ''
+const appendPeriod = (currentSec, sectionText) =>{
+    currentSec = allInOnePeriod(currentSec, sectionText)
+    console.log(currentSec)
+    return currentSec
 }
-runner("1")
-runner("2")
-runner("3")
-runner("4")
+appendPeriod(section,"1")
+// appendPeriod("2")
+// appendPeriod("3")
+// appendPeriod("4")
 
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
 <br>
 <br>
-${skill} <br><br>
-${skill} <br><br>
-${skill} <br><br>
+${section} <br><br>
+${section} <br><br>
+${section} <br><br>
 
 </p>`
 
