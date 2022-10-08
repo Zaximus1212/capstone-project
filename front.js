@@ -1,17 +1,17 @@
 const form = document.querySelector('form')
-const nameInput = document.querySelector('#name-input')
-const pictureInput = document.querySelector('#picture-input')
 const type = document.querySelector('input[name="type-button"]:checked').value
+const nameInput = document.querySelector('#name-input')
+const image = document.querySelector('#picture-input')
 const skills = document.querySelector('#skills')
-const moneyManagement = document.querySelector('#money-management')
+const money = document.querySelector('#money-management')
 const appointments = document.querySelector('#appointments')
-const communityIntegration = document.querySelector('#community-integration')
+const integration = document.querySelector('#community-integration')
 const preffered = document.querySelector('#preffered')
 const interaction = document.querySelector('#interaction')
 const activities = document.querySelector('#activities')
 const food = document.querySelector('#food')
 const mealPlan = document.querySelector('#meal-plan')
-const behaviors = document.querySelector('#behaviors')
+const behavior = document.querySelector('#behaviors')
 const comments = document.querySelector('#comments')
 const note = document.querySelector("#note")
 
@@ -25,39 +25,39 @@ function handleSubmit(e) {
     }
 
     let body = {
-        buttonId: +buttonId,
-        name: nameInput.value,
-        pictureInput: pictureInput.value,
         type: type, 
+        name: nameInput.value,
+        image: image.value,
         skills: skills.value,
-        moneyManagement: moneyManagement.value,
+        money: money.value,
         appointments: appointments.value,
-        communityIntegration: communityIntegration.value,
+        integration: integration.value,
         preffered: preffered.value,
         interaction: interaction.value,
         activities: activities.value,
         food: food.value,
         mealPlan: mealPlan.value,
-        behaviors: behaviors.value,
+        behavior: behavior.value,
         comments: comments.value,
-
+        // buttonId: +buttonId,
+        
     }
 
     axios.post('http://localhost:4004/buttons', body)
         .then(() => {
-            document.querySelector('#activities').checked = true
+            document.querySelector('#type-activities').checked = true
             nameInput.value = ''
-            pictureInput.value = ''
+            image.value = ''
             skills.value = ''
-            moneyManagement.value = ''
+            money.value = ''
             appointments.value = ''
-            communityIntegration.value = ''
+            integration.value = ''
             preffered.value = ''
             interaction.value = ''
             activities.value = ''
             food.value = ''
             mealPlan.value = ''
-            behaviors.value = ''
+            behavior.value = ''
             comments.value = ''
         })
 }
@@ -137,7 +137,7 @@ ${skill} <br><br>
 // ${activities}<br><br>
 // ${food}<br><br>
 // ${mealPlan}<br><br>
-// ${behaviors}<br><br>
+// ${behavior}<br><br>
 // ${comment}<br><br>
 
 form.addEventListener('submit', handleSubmit)

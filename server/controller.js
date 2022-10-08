@@ -10,10 +10,31 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
 })
 module.exports = {
+    seed: (req, res)=> {
+        sequelize.query(`
+            CREATE TABLE buttons (
+                type VARCHAR,
+                name VARCHAR,
+                image VARCHAR,
+                skills VARCHAR,
+                money VARCHAR,
+                appointments VARCHAR,
+                integration VARCHAR,
+                preffered VARCHAR,
+                interaction VARCHAR,
+                activities VARCHAR,
+                food VARCHAR,
+                mealPlan VARCHAR,
+                behavior VARCHAR,
+                comment VARCHAR,
+                buttonId SERIAL PRIMARY KEY
+            )
+        `)
+    },
     createButton: (req, res) => {
+        const {type} = req.body
         const {name} = req.body
         const {image} = req.body
-        const {type} = req.body
         const {skills} = req.body
         const {money} = req.body
         const {appointments} = req.body
