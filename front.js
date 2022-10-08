@@ -40,7 +40,6 @@ function handleSubmit(e) {
         behavior: behavior.value,
         comments: comments.value,
         // buttonId: +buttonId,
-        
     }
 
     axios.post('http://localhost:4004/buttons', body)
