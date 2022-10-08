@@ -3,11 +3,12 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const SERVER_PORT = 4004
-const {createButton, getButtons, getWriting} = require('./controller.js')
+const {createButton, getButtons, getWriting, seed} = require('./controller.js')
 
 app.use(cors())
 app.use(express.json())
 
+app.post('/seed', seed)
 app.post('/button', createButton)
 app.get('/buttons', getButtons)
 app.get('/button', getWriting)
