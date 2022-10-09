@@ -39,13 +39,16 @@ let skillsz = ''
 
 function handleSubmit(e) {
     e.preventDefault()
-    
+    let type = document.querySelector('input[name="type-button"]:checked').value
+    if (type === 'choose'){
+        alert ('You must enter a button type')
+        return
+    }
     if (nameInput.value < 1) {
         alert ('You must enter a button name')
         return
     }
     
-    let type = document.querySelector('input[name="type-button"]:checked').value
     let body = {
         type: type, 
         name: nameInput.value,
@@ -156,11 +159,14 @@ const getButtons = () => {
     axios.get('http://localhost:4004/buttons')
         .then(res => {
             res.data.forEach(elem => {
-                let buttonCard = `<div class="button-card" id="${elem.type}">
-                    <button onclick="append(${elem['buttonid']})"> append </button>
-                    <h4>${elem.name}</h4>
-                    <img class="image" src="${elem.image}></image>
-                    </div>`
+                let nAme = elem.name.charAt(0).toUpperCase() + elem.name.slice(1)
+                let buttonCard = `
+                    <section class="button-card" id="${elem.type}">
+                        <img class="image" src="${elem.image} alt="pic"/>
+                        <button onclick="append(${elem['buttonid']})"> append </button>
+                        <h4>${nAme}</h4>                    
+                    </section>
+                    `
             if (elem.type === 'ski'){
                 ski.innerHTML += buttonCard
             }
@@ -237,6 +243,14 @@ const moneyzPeriod = sectionText =>{
 const appointmentszPeriod = sectionText =>{
     appointmentsz = allInOnePeriod(appointmentsz, sectionText)
     console.log(appointmentsz)
+        if (appointmentsz === ''){
+            appointmentsz = 'was not necessary today'
+        }
+        if (appointmentsz.includes('was not necessary today ')){
+            let newApp = appointmentsz.split('')
+            newApp.splice(0,24)
+            appointmentsz = newApp.join('')
+        }
     return appointmentsz
 }
 const integrationzPeriod = sectionText =>{

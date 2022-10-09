@@ -3,15 +3,15 @@ body {
     color: hotpink;
 }
 .image {
-    width: 25px;
-    height: 25px;
+    width: 75px;
+    height: 75px;
 }
 .buttonList {
     
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     align-content: stretch;
     
