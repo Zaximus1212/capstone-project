@@ -6,7 +6,7 @@ body {
     width: 75px;
     height: 75px;
 }
-#buttonList {
+.buttonList {
     
     display: flex;
     flex-direction: row;
@@ -15,4 +15,10 @@ body {
     align-items: center;
     align-content: stretch;
     
+}
+.button-card > button {
+    background-color: blue;
+    color: aquamarine;
+    margin-top: 10px;
+    padding: 2px 10px;
 }

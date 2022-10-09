@@ -85,10 +85,11 @@ module.exports = {
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log('error with request from DB', err))
     },
-    getWriting: (req, res) => {
+    append: (req, res) => {
+        const { id } = req.params
         sequelize.query(`
             SELECT * FROM buttons
-            WHERE button_id = ${button_id}
+            WHERE buttonId = +${id}
         `)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log('error getting all the data', err))

@@ -1,5 +1,4 @@
 const form = document.querySelector('form')
-const type = document.querySelector('input[name="type-button"]:checked').value
 const nameInput = document.querySelector('#name-input')
 const image = document.querySelector('#picture-input')
 const skills = document.querySelector('#skills')
@@ -14,16 +13,27 @@ const mealPlan = document.querySelector('#meal-plan')
 const behavior = document.querySelector('#behaviors')
 const comment = document.querySelector('#comment')
 const note = document.querySelector("#note")
-
+const buttonList = document.querySelector('#buttonList')
+const ski = document.querySelector('#ski')
+const mon = document.querySelector('#mon')
+const app = document.querySelector('#app')
+const int = document.querySelector('#int')
+const pref = document.querySelector('#pref')
+const act = document.querySelector('#act')
+const phood = document.querySelector('#phood')
+const meal = document.querySelector('#meal')
+const beh = document.querySelector('#beh')
+const comm = document.querySelector('#comm')
 
 function handleSubmit(e) {
     e.preventDefault()
-
+    
     if (nameInput.value < 1) {
         alert ('You must enter a button name')
         return
     }
-
+    
+    let type = document.querySelector('input[name="type-button"]:checked').value
     let body = {
         type: type, 
         name: nameInput.value,
@@ -44,7 +54,7 @@ function handleSubmit(e) {
     axios.post('http://localhost:4004/button', body)
         .then(() => {
             console.log('button received')
-            document.querySelector('#type-activities').checked = true
+            // document.querySelector('#type-skills').checked = true
             nameInput.value = ''
             image.value = ''
             skills.value = ''
@@ -61,17 +71,47 @@ function handleSubmit(e) {
             // getButtons()
         })
 }
-const getButtons = () => {
-    axios.get('http://localhost:4004/buttons')
+const append = id => {
+    axios.get(`http://localhost:4004/buttons/${id}`)
     .then(res => {
-        res.data.forEach(elem => {
-            let buttonCard = `<div class="${elem.type} button-card">
-                <h3>${elem.name}</h3>
-                <img class="image" src="${elem.image}>
-                <h3>Rating: ${elem.rating}/5</h3>
-                <button onclick="append(${elem['buttonId']})">append</button>
-                </div>
-            `
+        const {skills} = res.data
+        const {money} = res.data
+        const {appointments} = res.data
+        const {integration} = res.data
+        const {preffered} = res.data
+        const {interaction} = res.data
+        const {activities} = res.data
+        const {food} = res.data
+        const {meal} = res.data
+        const {behavior} = res.data
+        const {comment} = res.data
+        console.log(res.data)
+        // skillszPeriod(skills)
+        // moneyzPeriod(money)
+        // appointmentszPeriod(appointments)
+        // integrationzPeriod(integration)
+        // prefferedzPeriod(preffered)
+        // interactionzPeriod(interaction)
+        // activitieszPeriod(activities)
+        // foodzPeriod(food)
+        // mealPlanzPeriod(meal)
+        // behaviorzPeriod(behavior)
+        // commentzPeriod(comment)
+    })
+    .catch(err => console.log(err))
+}
+const getButtons = () => {
+    // buttonlist.innerHTML= ''
+    
+    axios.get('http://localhost:4004/buttons')
+        .then(res => {
+            res.data.forEach(elem => {
+                let buttonCard = `<div class="button-card" id="${elem.type}">
+                    <button onclick="append(${elem['buttonid']})"> append </button>
+                    <h3>${elem.name}</h3>
+                    <img class="image" src="${elem.image}></image>
+                    </div>`
+        // buttonList.innerHTML += buttonCard
             if (elem.type === 'ski'){
                 ski.innerHTML += buttonCard
             }
@@ -106,21 +146,19 @@ const getButtons = () => {
         })
     })
 }
-
-
 const writerPeriod = arr => {
     arr[1] = arr[1].charAt(0).toUpperCase() + arr[1].slice(1, arr[1].length)
     const string = arr.join('. ')
     return string
 } 
-const writerComma = arr => {
-    const string = arr.join(', ')
-    return string
-} 
-const writerSpace = arr => {
-    const string = arr.join(' ')
-    return string
-} 
+// const writerComma = arr => {
+//     const string = arr.join(', ')
+//     return string
+// } 
+// const writerSpace = arr => {
+//     const string = arr.join(' ')
+//     return string
+// } 
 const retToArr = str => {
     const Array = []
     Array.push(str)
@@ -133,12 +171,12 @@ const ArrPusher = (orig, added) => {
 const allInOnePeriod = (str1, str2) => {
     return writerPeriod(ArrPusher(retToArr(str1), str2))
 }
-const allInOneComma = (str1, str2) => {
-    return writerComma(ArrPusher(retToArr(str1), str2))
-}
-const allInOneSpace = (str1, str2) => {
-    return writerSpace(ArrPusher(retToArr(str1), str2))
-}
+// const allInOneComma = (str1, str2) => {
+//     return writerComma(ArrPusher(retToArr(str1), str2))
+// }
+// const allInOneSpace = (str1, str2) => {
+//     return writerSpace(ArrPusher(retToArr(str1), str2))
+// }
 
 let commentz = ''
 let behaviorz = ''
@@ -152,73 +190,127 @@ let appointmentsz = ''
 let moneyz = ''
 let skillsz = ''
 
-const skillszPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    skillsz = currentSec
+const skillszPeriod = sectionText =>{
+    skillsz = allInOnePeriod(skillsz, sectionText)
     console.log(skillsz)
     return skillsz
 }
-const moneyzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    moneyz = currentSec
+// const skillszPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     skillsz = currentSec
+//     console.log(skillsz)
+//     return skillsz
+// }
+const moneyzPeriod = sectionText =>{
+    moneyz = allInOnePeriod(moneyz, sectionText)
     console.log(moneyz)
     return moneyz
 }
-const appointmentszPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    appointmentsz = currentSec
+// const moneyzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     moneyz = currentSec
+//     console.log(moneyz)
+//     return moneyz
+// }
+const appointmentszPeriod = sectionText =>{
+    appointmentsz = allInOnePeriod(appointmentsz, sectionText)
     console.log(appointmentsz)
     return appointmentsz
 }
-const integrationzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    integrationz = currentSec
+// const appointmentszPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     appointmentsz = currentSec
+//     console.log(appointmentsz)
+//     return appointmentsz
+// }
+const integrationzPeriod = sectionText =>{
+    integrationz = allInOnePeriod(integrationz, sectionText)
     console.log(integrationz)
     return integrationz
 }
-const prefferedzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    prefferedz = currentSec
+// const integrationzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     integrationz = currentSec
+//     console.log(integrationz)
+//     return integrationz
+// }
+const prefferedzPeriod = sectionText =>{
+    prefferedz = allInOnePeriod(prefferedz, sectionText)
     console.log(prefferedz)
     return prefferedz
 }
-const interactionzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    interactionz = currentSec
+// const prefferedzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     prefferedz = currentSec
+//     console.log(prefferedz)
+//     return prefferedz
+// }
+const interactionzPeriod = sectionText =>{
+    interactionz = allInOnePeriod(interactionz, sectionText)
     console.log(interactionz)
     return interactionz
 }
-const activitieszPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    activitiesz = currentSec
+// const interactionzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     interactionz = currentSec
+//     console.log(interactionz)
+//     return interactionz
+// }
+const activitieszPeriod = sectionText =>{
+    activitiesz = allInOnePeriod(activitiesz, sectionText)
     console.log(activitiesz)
     return activitiesz
 }
-const foodzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    foodz = currentSec
+// const activitieszPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     activitiesz = currentSec
+//     console.log(activitiesz)
+//     return activitiesz
+// }
+const foodzPeriod = sectionText =>{
+    foodz = allInOnePeriod(foodz, sectionText)
     console.log(foodz)
     return foodz
 }
-const mealPlanzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    mealPlanz = currentSec
+// const foodzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     foodz = currentSec
+//     console.log(foodz)
+//     return foodz
+// }
+const mealPlanzPeriod = sectionText =>{
+    mealPlanz = allInOnePeriod(mealPlanz, sectionText)
     console.log(mealPlanz)
     return mealPlanz
 }
-const behaviorzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    behaviorz = currentSec
+// const mealPlanzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     mealPlanz = currentSec
+//     console.log(mealPlanz)
+//     return mealPlanz
+// }
+const behaviorzPeriod = sectionText =>{
+    behaviorz = allInOnePeriod(behaviorz, sectionText)
     console.log(behaviorz)
     return behaviorz
 }
-const commentzPeriod = (currentSec, sectionText) =>{
-    currentSec = allInOnePeriod(currentSec, sectionText)
-    commentz = currentSec
+// const behaviorzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     behaviorz = currentSec
+//     console.log(behaviorz)
+//     return behaviorz
+// }
+const commentzPeriod = sectionText =>{
+    commentz = allInOnePeriod(commentz, sectionText)
     console.log(commentz)
     return commentz
 }
-
+// const commentzPeriod = (currentSec, sectionText) =>{
+//     currentSec = allInOnePeriod(currentSec, sectionText)
+//     commentz = currentSec
+//     console.log(commentz)
+//     return commentz
+// }
 
 // let added = ''
 // const Period = (currentSec, sectionText) =>{
@@ -228,70 +320,40 @@ const commentzPeriod = (currentSec, sectionText) =>{
 //     return added
 // }
 
-
-
-
-
-skillszPeriod(skillsz,'fdsD')
-moneyzPeriod(moneyz,'3')
-moneyzPeriod(moneyz,'3')
-moneyzPeriod(moneyz,'3')
-moneyzPeriod(moneyz,'3')
-appointmentszPeriod(appointmentsz,'4')
-integrationzPeriod(integrationz,'5')
-prefferedzPeriod(prefferedz,'6')
-prefferedzPeriod(prefferedz,'6+3')
-prefferedzPeriod(prefferedz,'7')
-interactionzPeriod(interactionz,'7')
-activitieszPeriod(activitiesz,'8')
-foodzPeriod(foodz,'1')
-mealPlanzPeriod(mealPlanz,'2')
-behaviorzPeriod(behaviorz,'3')
-commentzPeriod(commentz,'4')
-// Period(z,'5')
-// Period(z,'6')
-// Period(z,'7')
-// Period(z,'8')
-
-// Period(added,"2")
-// Period(section,"1")
-// Period("3")
-// Period("4")
+// appointmentszPeriod('4')
+// integrationzPeriod('5')
+// prefferedzPeriod('6')
+// prefferedzPeriod('6+3')
+// prefferedzPeriod('7')
+// interactionzPeriod('7')
+// activitieszPeriod('8')
+skillszPeriod('fdsD')
+// moneyzPeriod('3')
+// moneyzPeriod('3')
+// moneyzPeriod('3')
+// moneyzPeriod('3')
+// foodzPeriod('1')
+// mealPlanzPeriod('2')
+// behaviorzPeriod('3')
+// commentzPeriod('4')
 
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
-<br><br>
-${money}<br><br>
-${appointments}<br><br>
-${integration}<br><br>
-${preffered}<br><br>
-${interaction}<br><br>
-${activities}<br><br>
-${food}<br><br>
-${mealPlan}<br><br>
-${behavior}<br><br>
-${comment}<br><br>
-<br><br>
+
+${skillsz} <br><br>
+${moneyz}<br><br>
+${appointmentsz}<br><br>
+${integrationz}<br><br>
+${prefferedz}<br><br>
+${interactionz}<br><br>
+${activitiesz}<br><br><br><br>
+He\’s very interested in community integration already. <br><br>
+${foodz}<br><br>
+${mealPlanz}<br><br>
+${behaviorz}<br><br><br><br>
+${commentz}<br><br>
+
 </p>`
-// ${commentz} <br><br>
-// ${behaviorz} <br><br>
-// ${mealPlanz} <br><br>
-// ${foodz} <br><br>
-// ${activitiesz} <br><br>
-// ${interactionz} <br><br>
-// ${prefferedz} <br><br>
-// ${integrationz} <br><br>
-// ${appointmentsz} <br><br>
-// ${moneyz} <br><br>
-// ${skillsz} <br><br>
-
-
-
-
-
-
-
-
 
 getButtons()
 form.addEventListener('submit', handleSubmit)
