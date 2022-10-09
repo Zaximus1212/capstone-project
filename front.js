@@ -12,7 +12,7 @@ const activities = document.querySelector('#activities')
 const food = document.querySelector('#food')
 const mealPlan = document.querySelector('#meal-plan')
 const behavior = document.querySelector('#behaviors')
-const comments = document.querySelector('#comments')
+const comment = document.querySelector('#comment')
 const note = document.querySelector("#note")
 
 
@@ -38,8 +38,7 @@ function handleSubmit(e) {
         food: food.value,
         mealPlan: mealPlan.value,
         behavior: behavior.value,
-        comments: comments.value,
-        // buttonId: +buttonId,
+        comment: comment.value,
     }
 
     axios.post('http://localhost:4004/button', body)
@@ -58,10 +57,55 @@ function handleSubmit(e) {
             food.value = ''
             mealPlan.value = ''
             behavior.value = ''
-            comments.value = ''
+            comment.value = ''
+            // getButtons()
         })
 }
-
+const getButtons = () => {
+    axios.get('http://localhost:4004/buttons')
+    .then(res => {
+        res.data.forEach(elem => {
+            let buttonCard = `<div class="${elem.type} button-card">
+                <h3>${elem.name}</h3>
+                <img class="image" src="${elem.image}>
+                <h3>Rating: ${elem.rating}/5</h3>
+                <button onclick="append(${elem['buttonId']})">append</button>
+                </div>
+            `
+            if (elem.type === 'ski'){
+                ski.innerHTML += buttonCard
+            }
+            if (elem.type === 'mon'){
+                mon.innerHTML += buttonCard
+            }
+            if (elem.type === 'app'){
+                app.innerHTML += buttonCard
+            }
+            if (elem.type === 'int'){
+                int.innerHTML += buttonCard
+            }
+            if (elem.type === 'pref'){
+                pref.innerHTML += buttonCard
+            }
+            if (elem.type === 'act'){
+                act.innerHTML += buttonCard
+            }
+            if (elem.type === 'food'){
+                phood.innerHTML += buttonCard
+            }
+            if (elem.type === 'meal'){
+                meal.innerHTML += buttonCard
+            }
+            if (elem.type === 'beh'){
+                beh.innerHTML += buttonCard
+            }
+            if (elem.type === 'comm'){
+                comm.innerHTML += buttonCard
+            }
+            
+        })
+    })
+}
 
 
 const writerPeriod = arr => {
@@ -95,29 +139,6 @@ const allInOneComma = (str1, str2) => {
 const allInOneSpace = (str1, str2) => {
     return writerSpace(ArrPusher(retToArr(str1), str2))
 }
-// console.log(allInOnePeriod((allInOnePeriod((allInOnePeriod('hey', 'watch')), 'this')), 'im making a sentence'))
-// const returner = ret => {
-
-// }
-// skills
-// money
-// appointments
-// integration
-// preffered
-// interaction
-// activities
-// food
-// mealPlan
-// behavior
-// comment
-
-// const catString = 'skills,money,appointments,integration,preffered,interaction,activities,food,mealPlan,behavior,comment'
-// let catArra = catString.split(",")
-// for(let i = 0; i < catArra.length; i++) {
-//     catArra[i] = ''
-// }
-// console.log(catArra[0])
-// let section = '1234'
 
 let commentz = ''
 let behaviorz = ''
@@ -210,15 +231,12 @@ const commentzPeriod = (currentSec, sectionText) =>{
 
 
 
-// Period(section,'1')
-// Period(section,'fdsD')
-// Period(section,'fdsD')
+
 skillszPeriod(skillsz,'fdsD')
 moneyzPeriod(moneyz,'3')
 moneyzPeriod(moneyz,'3')
 moneyzPeriod(moneyz,'3')
 moneyzPeriod(moneyz,'3')
-
 appointmentszPeriod(appointmentsz,'4')
 integrationzPeriod(integrationz,'5')
 prefferedzPeriod(prefferedz,'6')
@@ -243,21 +261,29 @@ commentzPeriod(commentz,'4')
 note.innerHTML = `<h1>Your note starts here</h1> 
 <p>
 <br><br>
-${commentz} <br><br>
-${behaviorz} <br><br>
-${mealPlanz} <br><br>
-${foodz} <br><br>
-${activitiesz} <br><br>
-${interactionz} <br><br>
-${prefferedz} <br><br>
-${integrationz} <br><br>
-${appointmentsz} <br><br>
-${moneyz} <br><br>
-${skillsz} <br><br>
- <br><br>
-
-
+${money}<br><br>
+${appointments}<br><br>
+${integration}<br><br>
+${preffered}<br><br>
+${interaction}<br><br>
+${activities}<br><br>
+${food}<br><br>
+${mealPlan}<br><br>
+${behavior}<br><br>
+${comment}<br><br>
+<br><br>
 </p>`
+// ${commentz} <br><br>
+// ${behaviorz} <br><br>
+// ${mealPlanz} <br><br>
+// ${foodz} <br><br>
+// ${activitiesz} <br><br>
+// ${interactionz} <br><br>
+// ${prefferedz} <br><br>
+// ${integrationz} <br><br>
+// ${appointmentsz} <br><br>
+// ${moneyz} <br><br>
+// ${skillsz} <br><br>
 
 
 
@@ -267,15 +293,5 @@ ${skillsz} <br><br>
 
 
 
-// ${money}<br><br>
-// ${appointments}<br><br>
-// ${integration}<br><br>
-// ${preffered}<br><br>
-// ${interaction}<br><br>
-// ${activities}<br><br>
-// ${food}<br><br>
-// ${mealPlan}<br><br>
-// ${behavior}<br><br>
-// ${comment}<br><br>
-
+getButtons()
 form.addEventListener('submit', handleSubmit)

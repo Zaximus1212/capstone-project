@@ -9,10 +9,23 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
         }
     }
 })
+
+const addEscape = str =>{
+    const newArr = str.trim().split('')
+    const index = newArr.findIndex(char => char === "'")
+    if (index !== -1){
+        newArr.splice(index, 0, "'")
+    }
+    return newArr.join('')
+}
+
 module.exports = {
     seed: (req, res)=> {
         sequelize.query(`
+            drop table if exists buttons;
+
             CREATE TABLE buttons (
+                buttonId SERIAL PRIMARY KEY,
                 type VARCHAR,
                 name VARCHAR,
                 image VARCHAR,
@@ -26,8 +39,7 @@ module.exports = {
                 food VARCHAR,
                 mealPlan VARCHAR,
                 behavior VARCHAR,
-                comment VARCHAR,
-                buttonId SERIAL PRIMARY KEY
+                comment VARCHAR
             )
         `).then(() => {
             console.log('DB seeded!')
@@ -36,24 +48,34 @@ module.exports = {
     },
     createButton: (req, res) => {
         const {type} = req.body
-        const {name} = req.body
+        let {name} = req.body
         const {image} = req.body
-        const {skills} = req.body
-        const {money} = req.body
-        const {appointments} = req.body
-        const {integration} = req.body
-        const {preffered} = req.body
-        const {interaction} = req.body
-        const {activities} = req.body
-        const {food} = req.body
-        const {mealPlan} = req.body
-        const {behavior} = req.body
-        const {comment} = req.body
-        
+        let {skills} = req.body
+        let {money} = req.body
+        let {appointments} = req.body
+        let {integration} = req.body
+        let {preffered} = req.body
+        let {interaction} = req.body
+        let {activities} = req.body
+        let {food} = req.body
+        let {mealPlan} = req.body
+        let {behavior} = req.body
+        let {comment} = req.body
+        name = addEscape(name)
+        skills = addEscape(skills)
+        money = addEscape(money)
+        appointments = addEscape(appointments)
+        integration = addEscape(integration)
+        preffered = addEscape(preffered)
+        interaction = addEscape(interaction)
+        activities = addEscape(activities)
+        food = addEscape(food)
+        mealPlan = addEscape(mealPlan)
+        behavior = addEscape(behavior)
+        comment = addEscape(comment)
         sequelize.query(`
-            INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, meal_plan, behavior, comment)
-            VALUES (${name},${image},${type},${skills},${money},${appointments},${integration},${preffered},${interaction},${activities},${food},${mealPlan},${behavior},${comment})
-        `).then(dbRes => res.status(200).send(dbRes[0]))
+            INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, mealPlan, behavior, comment)
+            VALUES ('${name}','${image}','${type}','${skills}','${money}','${appointments}','${integration}','${preffered}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}') `).then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log('error with sending to DB', err))
     },
     getButtons: (req, res) => {

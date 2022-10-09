@@ -8,7 +8,18 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <menu id="buttonList">
+        <section id="ski"></section>
+        <section id="mon"></section>
+        <section id="app"></section>
+        <section id="int"></section>
+        <section id="pref"></section>
+        <section id="act"></section>
+        <section id="phood"></section>
+        <section id="meal"></section>
+        <section id="beh"></section>
+        <section id="comm"></section>
+    </menu>
     <form>
         <label for="name-input">What's it called?</label>
         <input type='text' id="name-input"/>
@@ -18,52 +29,52 @@
 
         <h4>What type of button?</h4>
         <div class="radio">
-            <input type="radio" name="type-button" value="1" id="type-skills" checked="true"/>
+            <input type="radio" name="type-button" value="ski" id="type-skills"/>
             <label for="skills-place">Skills</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="2" id="type-money-management"/>
+            <input type="radio" name="type-button" value="mon" id="type-money-management"/>
             <label for="rating-two">Money Management</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="3" id="type-appointments"/>
+            <input type="radio" name="type-button" value="app" id="type-appointments"/>
             <label for="rating-three">Appointments</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="4" id="type-integration"/>
+            <input type="radio" name="type-button" value="int" id="type-integration"/>
             <label for="rating-four">Integration</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="5" id="type-preffered-activities"/>
+            <input type="radio" name="type-button" value="pref" id="type-preffered-activities"/>
             <label for="rating-five">Preffered Activities</label>
         </div>
         
         <div class="radio">
-            <input type="radio" name="type-button" value="6" id="type-activities" checked="true"/>
+            <input type="radio" name="type-button" value="act" id="type-activities" checked="true"/>
             <label for="rating-one">Activities</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="7" id="type-food"/>
+            <input type="radio" name="type-button" value="food" id="type-food"/>
             <label for="rating-two">Food</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="8" id="type-meal-planning"/>
+            <input type="radio" name="type-button" value="meal" id="type-meal-planning"/>
             <label for="rating-three">Meal Planning</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="9" id="type-behaviors"/>
+            <input type="radio" name="type-button" value="beh" id="type-behaviors"/>
             <label for="rating-four">Behaviors</label>
         </div>
 
         <div class="radio">
-            <input type="radio" name="type-button" value="10" id="type-daily-comments"/>
+            <input type="radio" name="type-button" value="comm" id="type-daily-comments"/>
             <label for="rating-five">Daily Comments</label>
         </div>
 
@@ -97,9 +108,9 @@
         <label for="behaviors">if pertaining to behaviors, what does it write?</label>
         <input type='text' id="behaviors"/>
 
-        <label for="comments">if pertaining to the daily comment, what does it write?</label>
-        <input type='text' id="comments"/>
-
+        <label for="comment">if pertaining to the daily comment, what does it write?</label>
+        <input type='text' id="comment"/>
+        
         <button>Add</button>
     </form>
     <div>
