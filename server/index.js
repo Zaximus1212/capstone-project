@@ -11,7 +11,7 @@ app.use(express.json())
 app.post('/seed', seed)
 app.post('/button', createButton)
 app.get('/buttons', getButtons)
-app.get('/buttons/:id', append)
+app.get('/writing/:id', append)
 
 
 

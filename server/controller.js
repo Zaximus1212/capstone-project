@@ -89,7 +89,7 @@ module.exports = {
         const { id } = req.params
         sequelize.query(`
             SELECT * FROM buttons
-            WHERE buttonId = +${id}
+            WHERE buttonId = ${id}
         `)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log('error getting all the data', err))
