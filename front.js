@@ -140,7 +140,7 @@ const append = id => {
             He\’s very interested in community integration already. <br><br>
             </p>
             <p class="indigo">
-            ${foodz}. He also ate many granola bars today as usual. <br><br>
+            He ate many granola bars today as usual. ${foodz}<br><br>
             </p>
             <p class="violet">
             ${mealPlanz}<br><br>
@@ -217,6 +217,7 @@ const writerPeriod = arr => {
 } 
 const retToArr = str => {
     const array = []
+    str = str.trim()
     array.push(str)
     return array
 }
@@ -249,7 +250,7 @@ const appointmentszPeriod = sectionText =>{
     if (appointmentsz === ''){
         appointmentsz = 'was not necessary today'
     }
-    if (appointmentsz.includes('was not necessary today  H' || 'was not necessary today  W')){
+    if (appointmentsz.includes('was not necessary today H' || 'was not necessary today W')){
         let newApp = appointmentsz.split('')
         newApp.splice(0,24)
         appointmentsz = newApp.join('')
@@ -284,6 +285,14 @@ const foodzPeriod = sectionText =>{
 }
 const mealPlanzPeriod = sectionText =>{
     mealPlanz = allInOnePeriod(mealPlanz, sectionText)
+    if (mealPlanz === ''){
+        mealPlanz = 'he refused today'
+    }
+    if (mealPlanz.includes('he refused today H' || 'he refused today W')){
+        let newApp = mealPlanz.split('')
+        newApp.splice(0,17)
+        mealPlanz = newApp.join('')
+    }
     console.log(mealPlanz)
     return mealPlanz
 }
