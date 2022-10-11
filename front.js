@@ -115,7 +115,7 @@ const append = id => {
             commentz = commentzPeriod(comment)
             // return skillsz = skillszPeriod(skillz),moneyz = moneyzPeriod(money),appointmentsz = appointmentszPeriod(appointments),integrationz = integrationzPeriod(integration),prefferedz = prefferedzPeriod(preffered),interactionz = interactionzPeriod(interaction),activitiesz = activitieszPeriod(activities), foodz = foodzPeriod(food),mealPlanz = mealPlanzPeriod(meal),behaviorz = behaviorzPeriod(behavior),commentz = commentzPeriod(comment)
             note.innerHTML = `<h1>Your note starts here</h1> 
-            <p>
+            <p class="bread"> 
             ${skillsz} <br><br>
             </p>
             <p class="red">
@@ -148,7 +148,7 @@ const append = id => {
             <p class="purple">
             ${behaviorz}<br><br><br><br>
             </p>
-            <p>
+            <p class="bread"> 
             ${commentz}<br><br> 
             </p>`
         })
