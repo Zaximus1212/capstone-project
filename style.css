@@ -2,12 +2,18 @@ body {
     background-color: black;
     color: hotpink;
 }
+p {
+    margin: 0px;
+}
+#note > p {
+    margin: 3px;
+}
 .image {
     width: 75px;
     height: 75px;
 }
 .buttonList {
-    
+    height: 130px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -17,8 +23,9 @@ body {
     
 }
 .button-card > button {
-    background-color: blue;
-    color: aquamarine;
+    border-color: rgb(239, 109, 174);
+    background-color: hotpink;
+    color: black;
     margin-top: 10px;
     padding: 2px 10px;
     z-index: 3;

@@ -113,8 +113,8 @@ const append = id => {
             mealPlanz = mealPlanzPeriod(meal)
             behaviorz = behaviorzPeriod(behavior)
             commentz = commentzPeriod(comment)
-            // return skillsz = skillszPeriod(skillz),moneyz = moneyzPeriod(money),appointmentsz = appointmentszPeriod(appointments),integrationz = integrationzPeriod(integration),prefferedz = prefferedzPeriod(preffered),interactionz = interactionzPeriod(interaction),activitiesz = activitieszPeriod(activities), foodz = foodzPeriod(food),mealPlanz = mealPlanzPeriod(meal),behaviorz = behaviorzPeriod(behavior),commentz = commentzPeriod(comment)
-            note.innerHTML = `<h1>Your note starts here</h1> 
+
+            note.innerHTML = ` 
             <p class="bread"> 
             ${skillsz} <br><br>
             </p>
@@ -164,7 +164,7 @@ const getButtons = () => {
                     <section class="button-card" id="${elem.type}">
                         <img class="image" src="${elem.image} alt="pic"/>
                         <button onclick="append(${elem['buttonid']})"> append </button>
-                        <h4>${nAme}</h4>                    
+                        <p>${nAme}</p>                    
                     </section>
                     `
             if (elem.type === 'ski'){
@@ -250,7 +250,7 @@ const appointmentszPeriod = sectionText =>{
     if (appointmentsz === ''){
         appointmentsz = 'was not necessary today'
     }
-    if (appointmentsz.includes('was not necessary today H' || 'was not necessary today W')){
+    if (appointmentsz.includes('was not necessary today H') || appointmentsz.includes('was not necessary today W')){
         let newApp = appointmentsz.split('')
         newApp.splice(0,24)
         appointmentsz = newApp.join('')
@@ -288,7 +288,7 @@ const mealPlanzPeriod = sectionText =>{
     if (mealPlanz === ''){
         mealPlanz = 'he refused today'
     }
-    if (mealPlanz.includes('he refused today H' || 'he refused today W')){
+    if (mealPlanz.includes('he refused today H') || mealPlanz.includes('he refused today W')){
         let newApp = mealPlanz.split('')
         newApp.splice(0,17)
         mealPlanz = newApp.join('')
