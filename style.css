@@ -1,6 +1,6 @@
 body { 
     background-color: black;
-    color: hotpink;
+    color: gold;
 }
 p {
     margin: 0px;
@@ -22,9 +22,9 @@ p {
     align-content: stretch;
     
 }
-.button-card > button {
-    border-color: rgb(239, 109, 174);
-    background-color: hotpink;
+button {
+    border-color: gold;
+    background-color: gold;
     color: black;
     margin-top: 10px;
     padding: 2px 10px;
