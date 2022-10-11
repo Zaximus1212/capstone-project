@@ -23,8 +23,18 @@ body {
     padding: 2px 10px;
     z-index: 3;
 }
-.red {color:#ff3366;}
-.orange {color:#ff6633;}
+.red {
+    background-color: #ff3366;
+    color:rgb(95, 13, 95);
+    z-index:1;
+
+
+}
+.orange {
+    background-color:#ff6633;
+    color:rgb(45, 12, 45);
+
+}
 .yellow {color:#FFCC33;}
 .green {color:#33FF66;}
 .cyan {color:#33FFCC;}

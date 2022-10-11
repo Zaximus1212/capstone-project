@@ -1,4 +1,5 @@
-const CONNECTION_STRING = 'postgres://tdqbphgqwrduea:4626a8b4e7ac7d7e8eaca80cb22dae09127a022b0a2cb8d1140636c5ff457fb5@ec2-34-235-198-25.compute-1.amazonaws.com:5432/df42evhf39aavv'
+require("dotenv").config();
+const {CONNECTION_STRING} = process.env
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
@@ -20,9 +21,10 @@ const addEscape = str =>{
 }
 
 module.exports = {
-    seed: (req, res)=> {
+    seed: (req, res)=> { 
+        //please dont seed the database, i will be using this app daily
         sequelize.query(`
-            drop table if exists buttons;
+            
 
             CREATE TABLE buttons (
                 buttonId SERIAL PRIMARY KEY,

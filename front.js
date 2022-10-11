@@ -140,7 +140,7 @@ const append = id => {
             He\’s very interested in community integration already. <br><br>
             </p>
             <p class="indigo">
-            ${foodz}<br><br>
+            ${foodz}. He also ate many granola bars today as usual. <br><br>
             </p>
             <p class="violet">
             ${mealPlanz}<br><br>
@@ -201,6 +201,8 @@ const getButtons = () => {
         })
     })
 }
+
+
 const writerPeriod = arr => {
     if(arr[0] !== '' && arr[0] !== '. ' ){
         arr[1] = arr[1].charAt(0).toUpperCase() + arr[1].slice(1, arr[1].length)
@@ -230,6 +232,8 @@ const arrPusher = (orig, added) => {
 const allInOnePeriod = (str1, str2) => {
     return writerPeriod(arrPusher(retToArr(str1), str2))
 }
+
+
 const skillszPeriod = sectionText =>{
     skillsz = allInOnePeriod(skillsz, sectionText)
     console.log(skillsz)
@@ -242,15 +246,15 @@ const moneyzPeriod = sectionText =>{
 }
 const appointmentszPeriod = sectionText =>{
     appointmentsz = allInOnePeriod(appointmentsz, sectionText)
+    if (appointmentsz === ''){
+        appointmentsz = 'was not necessary today'
+    }
+    if (appointmentsz.includes('was not necessary today  H' || 'was not necessary today  W')){
+        let newApp = appointmentsz.split('')
+        newApp.splice(0,24)
+        appointmentsz = newApp.join('')
+    }
     console.log(appointmentsz)
-        if (appointmentsz === ''){
-            appointmentsz = 'was not necessary today'
-        }
-        if (appointmentsz.includes('was not necessary today ')){
-            let newApp = appointmentsz.split('')
-            newApp.splice(0,24)
-            appointmentsz = newApp.join('')
-        }
     return appointmentsz
 }
 const integrationzPeriod = sectionText =>{

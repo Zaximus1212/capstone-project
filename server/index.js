@@ -1,8 +1,8 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const SERVER_PORT = 4004
+const {SERVER_PORT} = process.env
 const {createButton, getButtons, append, seed} = require('./controller.js')
 
 app.use(cors())
