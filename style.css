@@ -1,5 +1,7 @@
 * {
     margin: 0px;
+
+
     
 }
 body { 
@@ -8,7 +10,7 @@ body {
 }
 #title {
     font-size: 150px;
-    color: rgb(253, 177, 35);
+    color: rgb(240, 156, 0);
 }
 #note > p {
     margin: 0px;
@@ -55,48 +57,48 @@ body {
 }
 .bread {
     background-color: #01579B;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .red {
     background-color: #0277BD;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .orange {
     background-color:#0288D1;
-    color:black;
+    color:rgb(240, 156, 0);
 
 }
 .yellow {
     background-color: #039BE5;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .green {
     background-color: #03A9F4;;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .cyan {
     background-color:#29B6F6;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .sky {
     background-color:#4FC3F7;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .blue {
     background-color:#81D4FA;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .indigo {
     background-color:#B3E5FC;
-    color: black;
+    color: #01579B;
 }
 .violet {
     background-color:#E1F5FE;
-    color: black;
+    color: #01579B;
 }
 .purple {
     background-color: #29B6F6;
-    color: black;
+    color: rgb(240, 156, 0);
 }
 .buttonList {
     
@@ -107,7 +109,6 @@ body {
     align-items: center;
     align-content: stretch;
     font-size: 14px;
-    color: BLACK;
 }
 #note-marker {
     margin: 0px;
