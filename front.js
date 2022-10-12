@@ -37,6 +37,13 @@ let integrationz = ''
 let appointmentsz = ''
 let moneyz = ''
 let skillsz = ''
+let summonedNote = ''
+
+let currentDate = new Date()
+let cDay = currentDate.getDate()
+let cMonth = currentDate.getMonth() + 1
+let cYear = currentDate.getFullYear()
+let cDate = `${cMonth}/${cDay}/${cYear}`
 
 function handleSubmit(e) {
     e.preventDefault()
@@ -70,7 +77,6 @@ function handleSubmit(e) {
     axios.post('http://localhost:4004/button', body)
         .then(() => {
             console.log('button received')
-            // document.querySelector('#type-skills').checked = true
             nameInput.value = ''
             image.value = ''
             skills.value = ''
@@ -84,6 +90,8 @@ function handleSubmit(e) {
             mealPlan.value = ''
             behavior.value = ''
             comment.value = ''
+
+            alert('button received')
         })
 }
 const append = id => {
@@ -115,7 +123,11 @@ const append = id => {
             behaviorz = behaviorzPeriod(behavior)
             commentz = commentzPeriod(comment)
 
-            note.innerHTML = ` 
+            note.innerHTML = 
+            ` 
+            <p class="indigo"> 
+            ${cDate} <br><br>
+            </p>
             <p class="bread"> 
             ${skillsz} <br><br>
             </p>
@@ -151,12 +163,49 @@ const append = id => {
             </p>
             <p class="bread"> 
             ${commentz}<br><br> 
-            </p>`
-        })
-    })
-        .catch(err => console.log(err))
-}
+            </p>
+            <section class="button1 blue">
+                <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
+            </section>`
+            
+            summonedNote = `
+${cDate} 
+            
+${skillsz}
+            
+${moneyz}
 
+${appointmentsz}
+
+${integrationz}
+
+${prefferedz}
+
+${interactionz}
+
+${activitiesz}
+
+He\’s very interested in community integration already.
+
+He ate many granola bars today as usual. ${foodz}
+
+${mealPlanz}
+
+${behaviorz}
+
+${commentz}
+            `
+            return summonedNote
+        })
+        console.log(skillsz)
+    })
+    .catch(err => console.log(err))
+    console.log(skillsz)
+}
+const clipboard = () => {
+    navigator.clipboard.writeText(summonedNote)
+    alert("Copied the text")
+}
 
 const getButtons = () => {
     axios.get('http://localhost:4004/buttons')
@@ -169,7 +218,6 @@ const getButtons = () => {
                         <p>${nAme}</p>                    
                         </section>
                         `
-                        // <button onclick="append(${elem['buttonid']})"> append </button>
             if (elem.type === 'ski'){
                 ski.innerHTML += buttonCard
             }
@@ -312,19 +360,3 @@ const commentzPeriod = sectionText =>{
 
 getButtons()
 form.addEventListener('submit', handleSubmit)
-
-// const writerComma = arr => {
-//     const string = arr.join(', ')
-//     return string
-// } 
-// const writerSpace = arr => {
-//     const string = arr.join(' ')
-//     return string
-// } 
-
-// const allInOneComma = (str1, str2) => {
-//     return writerComma(arrPusher(retToArr(str1), str2))
-// }
-// const allInOneSpace = (str1, str2) => {
-//     return writerSpace(arrPusher(retToArr(str1), str2))
-// }
