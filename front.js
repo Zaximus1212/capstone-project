@@ -24,6 +24,7 @@ const phood = document.querySelector('#phood')
 const meal = document.querySelector('#meal')
 const beh = document.querySelector('#beh')
 const comm = document.querySelector('#comm')
+const buttonCard = document.querySelector('#button-card')
 
 let commentz = ''
 let behaviorz = ''
@@ -134,7 +135,7 @@ const append = id => {
             ${interactionz}<br><br>
             </p>
             <p class="sky">
-            ${activitiesz}<br><br><br><br>
+            ${activitiesz}<br><br>
             </p>
             <p class="blue">
             He\’s very interested in community integration already. <br><br>
@@ -146,7 +147,7 @@ const append = id => {
             ${mealPlanz}<br><br>
             </p>
             <p class="purple">
-            ${behaviorz}<br><br><br><br>
+            ${behaviorz}<br><br>
             </p>
             <p class="bread"> 
             ${commentz}<br><br> 
@@ -155,6 +156,8 @@ const append = id => {
     })
         .catch(err => console.log(err))
 }
+
+
 const getButtons = () => {
     axios.get('http://localhost:4004/buttons')
         .then(res => {
@@ -162,11 +165,11 @@ const getButtons = () => {
                 let nAme = elem.name.charAt(0).toUpperCase() + elem.name.slice(1)
                 let buttonCard = `
                     <section class="button-card" id="${elem.type}">
-                        <img class="image" src="${elem.image} alt="pic"/>
-                        <button onclick="append(${elem['buttonid']})"> append </button>
+                        <img class="image" onclick="append(${elem['buttonid']})" src="${elem.image} alt="pic"/>
                         <p>${nAme}</p>                    
-                    </section>
-                    `
+                        </section>
+                        `
+                        // <button onclick="append(${elem['buttonid']})"> append </button>
             if (elem.type === 'ski'){
                 ski.innerHTML += buttonCard
             }

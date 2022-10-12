@@ -8,117 +8,136 @@
     <title>Document</title>
 </head>
 <body>
+    <Section class="purple">
+        <p id="title" class="button1">*__Notes-in-a-Flash__*</p>
+    </Section>
     <section id="buttonList">
-        <section class="buttonList" id="ski"></section>
-        <section class="buttonList" id="mon"></section>
-        <section class="buttonList" id="app"></section>
-        <section class="buttonList" id="int"></section>
-        <section class="buttonList" id="pref"></section>
-        <section class="buttonList" id="act"></section>
-        <section class="buttonList" id="phood"></section>
-        <section class="buttonList" id="meal"></section>
-        <section class="buttonList" id="beh"></section>
-        <section class="buttonList" id="comm"></section>
+        <section class="buttonList bread" id="ski"></section>
+        <section class="buttonList red" id="mon"></section>
+        <section class="buttonList orange" id="app"></section>
+        <section class="buttonList yellow" id="int"></section>
+        <section class="buttonList green" id="pref"></section>
+        <section class="buttonList sky" id="act"></section>
+        <section class="buttonList indigo" id="phood"></section>
+        <section class="buttonList violet" id="meal"></section>
+        <section class="buttonList purple" id="beh"></section>
+        <section class="buttonList bread" id="comm"></section>
     </section>
     <form>
-        <label for="name-input">What's it called?</label>
-        <input type='text' id="name-input"/>
-
-        <label for="picture-input">post a picture?</label>
-        <input type='text' id="picture-input"/>
-
-        <h4>What type of button?</h4>
-        <div class="radio">
+        <div class="blue">
+            <label for="name-input">What's the button to be called?</label><br>
+            <input type='text' id="name-input"/>
+        </div>
+        <div class="cyan">
+            <label for="picture-input">Please post the image address here?</label><br>
+            <input type='text' id="picture-input"/>
+        </div>
+        <p class="yellow">What type of button would you like to add?</p>
+        <div class="blue radio">
             <input type="radio" name="type-button" value="choose" id="type-choose" checked="true"/>
             <label for="skills-place">Select</label>
         </div>
-        <div class="radio">
+        <div class="radio bread">
             <input type="radio" name="type-button" value="ski" id="type-skills"/>
             <label for="skills-place">Skills</label>
         </div>
 
-        <div class="radio">
+        <div class="radio red">
             <input type="radio" name="type-button" value="mon" id="type-money-management"/>
             <label for="money-place">Money Management</label>
         </div>
 
-        <div class="radio">
+        <div class="radio orange">
             <input type="radio" name="type-button" value="app" id="type-appointments"/>
             <label for="appointments-place">Appointments</label>
         </div>
 
-        <div class="radio">
+        <div class="radio yellow">
             <input type="radio" name="type-button" value="int" id="type-integration"/>
             <label for="integration-place">Integration</label>
         </div>
 
-        <div class="radio">
+        <div class="radio green">
             <input type="radio" name="type-button" value="pref" id="type-preffered-activities"/>
             <label for="preffered-place">Preffered Activities</label>
         </div>
         
-        <div class="radio">
+        <div class="radio sky">
             <input type="radio" name="type-button" value="act" id="type-activities"/>
             <label for="activities-place">Activities</label>
         </div>
 
-        <div class="radio">
+        <div class="radio indigo">
             <input type="radio" name="type-button" value="food" id="type-food"/>
             <label for="food-place">Food</label>
         </div>
 
-        <div class="radio">
+        <div class="radio violet">
             <input type="radio" name="type-button" value="meal" id="type-meal-planning"/>
             <label for="meal-place">Meal Planning</label>
         </div>
 
-        <div class="radio">
+        <div class="radio purple">
             <input type="radio" name="type-button" value="beh" id="type-behaviors"/>
             <label for="behaviors-place">Behaviors</label>
         </div>
 
-        <div class="radio">
+        <div class="radio  bread">
             <input type="radio" name="type-button" value="comm" id="type-daily-comments"/>
-            <label for="comments-place">Daily Comments</label>
+            <label for="comments-place">Daily Comments</label><br><br><br>
         </div>
+        <div class="bread">
+            <label for="skills">if pertaining to IMPROVING SKILLS, what does it write?</label><br>
+            <input class="add-button" type='text' id="skills"/><br><br>
+        </div><div class="red">
 
-        <label for="skills">if pertaining to skills, what does it write?</label><br>
-        <input type='text' id="skills"/><br>
-
-        <label for="money-management">if pertaining to money management, what does it write?</label><br>
-        <input type='text' id="money-management"/><br>
-
-        <label for="appointments">if pertaining to appointments, what does it write?</label><br>
-        <input type='text' id="appointments"/><br>
-
-        <label for="community-integration">if pertaining to community integration, what does it write?</label><br>
-        <input type='text' id="community-integration"/><br>
-
-        <label for="preffered">if pertaining to preffered activities, what does it write?</label><br>
-        <input type='text' id="preffered"/><br>
-
-        <label for="interaction">if pertaining to community interaction, what does it write?</label><br>
-        <input type='text' id="interaction"/><br>
-
-        <label for="activities">if pertaining to activities, what does it write?</label><br>
-        <input type='text' id="activities"/><br>
-
-        <label for="food">if pertaining to food, what does it write?</label><br>
-        <input type='text' id="food"/><br>
-
-        <label for="meal-plan">if pertaining to meal planning, what does it write?</label><br>
-        <input type='text' id="meal-plan"/><br>
-
-        <label for="behaviors">if pertaining to behaviors, what does it write?</label><br>
-        <input type='text' id="behaviors"/><br>
-
-        <label for="comment">if pertaining to the daily comment, what does it write?</label><br>
-        <input type='text' id="comment"/><br>
+            <label for="money-management">if pertaining to MONEY MANAGEMENT, what does it write?</label><br>
+            <input class="add-button" type='text' id="money-management"/><br><br>
+        </div><div class="orange">
         
-        <button>Add</button>
+            <label for="appointments">if pertaining to APPOINTMENTS, what does it write?</label><br>
+            <input class="add-button" type='text' id="appointments"/><br><br>
+        </div><div class="yellow">
+        
+            <label for="community-integration">if pertaining to COMMUNITY INTEGRATION, what does it write?</label><br>
+            <input class="add-button" type='text' id="community-integration"/><br><br>
+        </div><div class="green">
+        
+            <label for="preffered">if pertaining to PREFFERED ACTIVITIES, what does it write?</label><br>
+            <input class="add-button" type='text' id="preffered"/><br><br>
+        </div><div class="cyan">
+        
+            <label for="interaction">if pertaining to COMMUNITY INTERACTION, what does it write?</label><br>
+            <input class="add-button" type='text' id="interaction"/><br><br>
+        </div><div class="sky">
+        
+            <label for="activities">if pertaining to ACTIVITIES, what does it write?</label><br>
+            <input class="add-button" type='text' id="activities"/><br><br>
+        </div><div class="indigo">
+        
+            <label for="food">if pertaining to FOOD, what does it write?</label><br>
+            <input class="add-button" type='text' id="food"/><br><br>
+        </div><div class="violet">
+        
+            <label for="meal-plan">if pertaining to MEAL PLANNING, what does it write?</label><br>
+            <input class="add-button" type='text' id="meal-plan"/><br><br>
+        </div><div class="purple">
+        
+            <label for="behaviors">if pertaining to BEHAVIORS, what does it write?</label><br>
+            <input class="add-button" type='text' id="behaviors"/><br><br>
+        </div><div class="bread">
+        
+            <label for="comment">if pertaining to the DAILY COMMENT, what does it write?</label><br>
+            <input class="add-button" type='text' id="comment"/><br><br>
+        </div>
+        <section class="button1 blue">
+            <button class="add-button2 violet">ADD BUTTON</button>
+        </section>
     </form>
-    <div>
-        <h1 id="note">~~~~~~~~~~~~~~~~~Your note starts here~~~~~~~~~~~~~~~~~</h1>
+    <div class="cyan">
+        <p id="title" class="button1">Your note is summoned here</p>
+    </div>
+    <div id="note">
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js" integrity="sha512-bHeT+z+n8rh9CKrSrbyfbINxu7gsBmSHlDCb3gUF1BjmjDzKhoKspyB71k0CIRBSjE5IVQiMMVBgCWjF60qsvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="front.js"></script>
