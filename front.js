@@ -38,6 +38,8 @@ let appointmentsz = ''
 let moneyz = ''
 let skillsz = ''
 let summonedNote = ''
+let summonedNote2 = ''
+
 
 let currentDate = new Date()
 let cDay = currentDate.getDate()
@@ -166,11 +168,37 @@ const append = id => {
             </p>
             <section class="button1 blue">
                 <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
+                <button class="add-button2 violet image" onclick="clipboard2()">Copy note (no date)</button>
             </section>`
             
             summonedNote = `
 ${cDate} 
             
+${skillsz}
+            
+${moneyz}
+
+${appointmentsz}
+
+${integrationz}
+
+${prefferedz}
+
+${interactionz}
+
+${activitiesz}
+
+He\’s very interested in community integration already.
+
+He ate many granola bars today as usual. ${foodz}
+
+${mealPlanz}
+
+${behaviorz}
+
+${commentz}
+            `
+            summonedNote2 = `
 ${skillsz}
             
 ${moneyz}
@@ -204,6 +232,10 @@ ${commentz}
 }
 const clipboard = () => {
     navigator.clipboard.writeText(summonedNote)
+    alert("Copied the text")
+}
+const clipboard2 = () => {
+    navigator.clipboard.writeText(summonedNote2)
     alert("Copied the text")
 }
 

@@ -10,14 +10,9 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
         }
     }
 })
-
 const addEscape = str =>{
-    const newArr = str.trim().split('')
-    const index = newArr.findIndex(char => char === "'")
-    if (index !== -1){
-        newArr.splice(index, 0, "'")
-    }
-    return newArr.join('')
+    str = str.trim().replaceAll("'", "''")
+    return str
 }
 
 module.exports = {
