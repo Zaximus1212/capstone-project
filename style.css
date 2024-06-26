@@ -12,6 +12,10 @@ body {
     font-size: 150px;
     color: rgb(240, 156, 0);
 }
+#noteLabel {
+    font-size: 75px;
+    color: rgb(240, 156, 0);
+}
 #note > p {
     margin: 0px;
     font-size: 30px;

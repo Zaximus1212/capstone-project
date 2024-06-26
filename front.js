@@ -127,6 +127,10 @@ const append = id => {
 
             note.innerHTML = 
             ` 
+            <section class="button1 blue">
+            <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
+            <button class="add-button2 violet image" onclick="clipboard2()">Copy note (no date)</button>
+        </section>
             <p class="indigo"> 
             ${cDate} <br><br>
             </p>
@@ -166,10 +170,7 @@ const append = id => {
             <p class="bread"> 
             ${commentz}<br><br> 
             </p>
-            <section class="button1 blue">
-                <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
-                <button class="add-button2 violet image" onclick="clipboard2()">Copy note (no date)</button>
-            </section>`
+`
             
             summonedNote = `
 ${cDate} 
