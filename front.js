@@ -172,8 +172,7 @@ const append = id => {
             </p>
 `
             
-            summonedNote = `
-${cDate} 
+            summonedNote = `${cDate} 
             
 ${skillsz}
             
@@ -199,8 +198,7 @@ ${behaviorz}
 
 ${commentz}
             `
-            summonedNote2 = `
-${skillsz}
+            summonedNote2 = `${skillsz}
             
 ${moneyz}
 
