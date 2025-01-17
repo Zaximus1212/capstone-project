@@ -5,7 +5,7 @@ const skills = document.querySelector('#skills')
 const money = document.querySelector('#money-management')
 const appointments = document.querySelector('#appointments')
 const integration = document.querySelector('#community-integration')
-const preffered = document.querySelector('#preffered')
+const preferred = document.querySelector('#preferred')
 const interaction = document.querySelector('#interaction')
 const activities = document.querySelector('#activities')
 const food = document.querySelector('#food')
@@ -21,7 +21,7 @@ const int = document.querySelector('#int')
 const pref = document.querySelector('#pref')
 const act = document.querySelector('#act')
 const phood = document.querySelector('#phood')
-const meal = document.querySelector('#meal')
+const meal = document.querySelector('#mealButtons')
 const beh = document.querySelector('#beh')
 const comm = document.querySelector('#comm')
 const buttonCard = document.querySelector('#button-card')
@@ -67,7 +67,7 @@ function handleSubmit(e) {
         money: money.value,
         appointments: appointments.value,
         integration: integration.value,
-        preffered: preffered.value,
+        preferred: preferred.value,
         interaction: interaction.value,
         activities: activities.value,
         food: food.value,
@@ -85,7 +85,7 @@ function handleSubmit(e) {
             money.value = ''
             appointments.value = ''
             integration.value = ''
-            preffered.value = ''
+            preferred.value = ''
             interaction.value = ''
             activities.value = ''
             food.value = ''
@@ -101,15 +101,16 @@ const append = id => {
     .then(res => {
         res.data.forEach(elem => {
         
-            const skillz = elem.skills
+            const skillz = elem.skill
             const money = elem.money
-            const appointments = elem.appointments
+            const appointments = elem.appointment
             const integration = elem.integration
-            const preffered = elem.preffered
+            const preffered = elem.preferred
             const interaction = elem.interaction
-            const activities = elem.activities
+            const activities = elem.activity
             const food = elem.food
-            const meal = elem.mealplan
+            const meal = elem.mealPlan
+            // console.log("mealcheck is" + mealCheck)
             const behavior = elem.behavior
             const comment = elem.comment
             
@@ -130,7 +131,7 @@ const append = id => {
             <section class="button1 blue">
             <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
             <button class="add-button2 violet image" onclick="clipboard2()">Copy note (no date)</button>
-        </section>
+            </section>
             <p class="indigo"> 
             ${cDate} <br><br>
             </p>
@@ -170,7 +171,7 @@ const append = id => {
             <p class="bread"> 
             ${commentz}<br><br> 
             </p>
-`
+            `
             
             summonedNote = `${cDate} 
             
@@ -245,26 +246,26 @@ const getButtons = () => {
                 let nAme = elem.name.charAt(0).toUpperCase() + elem.name.slice(1)
                 let buttonCard = `
                     <section class="button-card" id="${elem.type}">
-                        <img class="image" onclick="append(${elem['buttonid']})" src="${elem.image} alt="pic"/>
+                        <img class="image" onclick="append(${elem['buttonId']})" src="${elem.image}"/>
                         <p>${nAme}</p>                    
                         </section>
                         `
-            if (elem.type === 'ski'){
+            if (elem.type === 'skill'){
                 ski.innerHTML += buttonCard
             }
-            if (elem.type === 'mon'){
+            if (elem.type === 'money'){
                 mon.innerHTML += buttonCard
             }
-            if (elem.type === 'app'){
+            if (elem.type === 'appointment'){
                 app.innerHTML += buttonCard
             }
-            if (elem.type === 'int'){
+            if (elem.type === 'integration'){
                 int.innerHTML += buttonCard
             }
-            if (elem.type === 'pref'){
+            if (elem.type === 'preferred'){
                 pref.innerHTML += buttonCard
             }
-            if (elem.type === 'act'){
+            if (elem.type === 'activity'){
                 act.innerHTML += buttonCard
             }
             if (elem.type === 'food'){
@@ -273,10 +274,10 @@ const getButtons = () => {
             if (elem.type === 'meal'){
                 meal.innerHTML += buttonCard
             }
-            if (elem.type === 'beh'){
+            if (elem.type === 'behavior'){
                 beh.innerHTML += buttonCard
             }
-            if (elem.type === 'comm'){
+            if (elem.type === 'comment'){
                 comm.innerHTML += buttonCard
             }
             

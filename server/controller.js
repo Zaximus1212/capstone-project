@@ -1,15 +1,35 @@
 require("dotenv").config();
-const {CONNECTION_STRING} = process.env
+// const {CONNECTION_STRING} = process.env
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize(CONNECTION_STRING, {
-    dialect: 'postgres',
-    dialectOptions:{
-        ssl: {
-            rejectUnauthorized: false
-        }
+const sequelize = new Sequelize(`original-notes`, "root", "ashiatsu", {
+    host: 'localhost',
+    dialect: 'mysql',
+    port:3306,
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
     }
 })
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log("connection successful")
+    })
+    .catch(err => {
+        console.log("unable to connect", err)
+    })
+
+// const sequelize = new Sequelize(CONNECTION_STRING, {
+//     dialect: 'postgres',
+//     dialectOptions:{
+//         ssl: {
+//             rejectUnauthorized: false
+//         }
+//     }
+// })
 const addEscape = str =>{
     str = str.trim().replaceAll("'", "''")
     return str
@@ -51,7 +71,7 @@ module.exports = {
         let {money} = req.body
         let {appointments} = req.body
         let {integration} = req.body
-        let {preffered} = req.body
+        let {preferred} = req.body
         let {interaction} = req.body
         let {activities} = req.body
         let {food} = req.body
@@ -63,7 +83,7 @@ module.exports = {
         money = addEscape(money)
         appointments = addEscape(appointments)
         integration = addEscape(integration)
-        preffered = addEscape(preffered)
+        preferred = addEscape(preferred)
         interaction = addEscape(interaction)
         activities = addEscape(activities)
         food = addEscape(food)
@@ -71,15 +91,18 @@ module.exports = {
         behavior = addEscape(behavior)
         comment = addEscape(comment)
         sequelize.query(`
-            INSERT INTO buttons (name, image, type, skills, money, appointments, integration, preffered, interaction, activities, food, mealPlan, behavior, comment)
-            VALUES ('${name}','${image}','${type}','${skills}','${money}','${appointments}','${integration}','${preffered}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}') `).then(dbRes => res.status(200).send(dbRes[0]))
+            INSERT INTO buttons (type, name, image, skill, money, appointment, integration, preferred, interaction, activity, food, mealPlan, behavior, comment, staring, argument, aggression, controlling, coping, redirection)
+            VALUES ('${type}','${name}','${image}','${skills}','${money}','${appointments}','${integration}','${preferred}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}','','','','','','') `).then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log('error with sending to DB', err))
     },
     getButtons: (req, res) => {
         sequelize.query(`
             SELECT * FROM buttons
         `)
-        .then(dbRes => res.status(200).send(dbRes[0]))
+        .then(dbRes => {
+            // console.log(dbRes)
+            res.status(200).send(dbRes[0])
+        })
         .catch(err => console.log('error with request from DB', err))
     },
     append: (req, res) => {

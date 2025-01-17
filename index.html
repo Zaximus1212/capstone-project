@@ -28,7 +28,7 @@
         <p class="indigo">Food</p>
         <section class="buttonList indigo" id="phood"></section>
         <p class="violet">Meal Planning</p>
-        <section class="buttonList violet" id="meal"></section>
+        <section class="buttonList violet" id="mealButtons"></section>
         <p class="purple">Behaviors</p>
         <section class="buttonList purple" id="beh"></section>
         <p class="bread">Daily Comments</p>
@@ -53,32 +53,32 @@
             <label for="skills-place">Select</label>
         </div>
         <div class="radio bread">
-            <input type="radio" name="type-button" value="ski" id="type-skills"/>
+            <input type="radio" name="type-button" value="skill" id="type-skills"/>
             <label for="skills-place">Skills</label>
         </div>
 
         <div class="radio red">
-            <input type="radio" name="type-button" value="mon" id="type-money-management"/>
+            <input type="radio" name="type-button" value="money" id="type-money-management"/>
             <label for="money-place">Money Management</label>
         </div>
 
         <div class="radio orange">
-            <input type="radio" name="type-button" value="app" id="type-appointments"/>
+            <input type="radio" name="type-button" value="appointment" id="type-appointments"/>
             <label for="appointments-place">Appointments</label>
         </div>
 
         <div class="radio yellow">
-            <input type="radio" name="type-button" value="int" id="type-integration"/>
+            <input type="radio" name="type-button" value="integration" id="type-integration"/>
             <label for="integration-place">Integration</label>
         </div>
 
         <div class="radio green">
-            <input type="radio" name="type-button" value="pref" id="type-preffered-activities"/>
+            <input type="radio" name="type-button" value="preferred" id="type-preffered-activities"/>
             <label for="preffered-place">Preferred Activities</label>
         </div>
         
         <div class="radio sky">
-            <input type="radio" name="type-button" value="act" id="type-activities"/>
+            <input type="radio" name="type-button" value="activity" id="type-activities"/>
             <label for="activities-place">Activities</label>
         </div>
 
@@ -93,12 +93,12 @@
         </div>
 
         <div class="radio purple">
-            <input type="radio" name="type-button" value="beh" id="type-behaviors"/>
+            <input type="radio" name="type-button" value="behavior" id="type-behaviors"/>
             <label for="behaviors-place">Behaviors</label>
         </div>
 
         <div class="radio  bread">
-            <input type="radio" name="type-button" value="comm" id="type-daily-comments"/>
+            <input type="radio" name="type-button" value="comment" id="type-daily-comments"/>
             <label for="comments-place">Daily Comments</label><br><br><br>
         </div>
         <div class="bread">
@@ -119,7 +119,7 @@
         </div><div class="green">
         
             <label for="preffered">if pertaining to PREFERRED ACTIVITIES, what does it write?</label><br>
-            <input class="add-button" type='text' id="preffered"/><br><br>
+            <input class="add-button" type='text' id="preferred"/><br><br>
         </div><div class="cyan">
         
             <label for="interaction">if pertaining to COMMUNITY INTERACTION, what does it write?</label><br>
