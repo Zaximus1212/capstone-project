@@ -90,9 +90,10 @@ module.exports = {
         mealPlan = addEscape(mealPlan)
         behavior = addEscape(behavior)
         comment = addEscape(comment)
+        console.log("before then block")
         sequelize.query(`
             INSERT INTO buttons (type, name, image, skill, money, appointment, integration, preferred, interaction, activity, food, mealPlan, behavior, comment, staring, argument, aggression, controlling, coping, redirection)
-            VALUES ('${type}','${name}','${image}','${skills}','${money}','${appointments}','${integration}','${preferred}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}','','','','','','') `).then(dbRes => res.status(200).send(dbRes[0]))
+            VALUES ('${type}','${name}','${image}','${skills}','${money}','${appointments}','${integration}','${preferred}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}','','','','','','') `).then(dbRes => res.sendStatus(200))
         .catch(err => console.log('error with sending to DB', err))
     },
     getButtons: (req, res) => {
