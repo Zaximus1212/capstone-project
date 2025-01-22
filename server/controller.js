@@ -13,23 +13,7 @@ const sequelize = new Sequelize(`original-notes`, "root", "ashiatsu", {
         idle: 10000
     }
 })
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log("connection successful")
-    })
-    .catch(err => {
-        console.log("unable to connect", err)
-    })
 
-// const sequelize = new Sequelize(CONNECTION_STRING, {
-//     dialect: 'postgres',
-//     dialectOptions:{
-//         ssl: {
-//             rejectUnauthorized: false
-//         }
-//     }
-// })
 const addEscape = str =>{
     str = str.trim().replaceAll("'", "''")
     return str
