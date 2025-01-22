@@ -57,6 +57,7 @@ let moneyz = ''
 let skillsz = ''
 let summonedNote = ''
 let summonedNote2 = ''
+let summonedNote3 = ''
 
 
 let currentDate = new Date()
@@ -123,7 +124,7 @@ function handleSubmit(e) {
             controllingInput.value = ''
             copingInput.value = ''
             redirectionInput.value = ''
-            
+
             alert('button received')
         })
 }
@@ -141,9 +142,14 @@ const append = id => {
             const activities = elem.activity
             const food = elem.food
             const meal = elem.mealPlan
-            // console.log("mealcheck is" + mealCheck)
             const behavior = elem.behavior
             const comment = elem.comment
+            const staringAppend = elem.staring
+            const argumentAppend = elem.argument
+            const aggressionAppend = elem.aggression
+            const controllingAppend = elem.controlling
+            const copingAppend = elem.coping
+            const redirectionAppend = elem.redirection
             
             skillsz = skillszPeriod(skillz)
             moneyz = moneyzPeriod(money)
@@ -156,12 +162,19 @@ const append = id => {
             mealPlanz = mealPlanzPeriod(meal)
             behaviorz = behaviorzPeriod(behavior)
             commentz = commentzPeriod(comment)
+            staringNoteSoFar = staringNoteSoFarPeriod(staringAppend)
+            argumentNoteSoFar = argumentNoteSoFarPeriod(argumentAppend)
+            aggressionNoteSoFar = aggressionNoteSoFarPeriod(aggressionAppend)
+            controllingNoteSoFar = controllingNoteSoFarPeriod(controllingAppend)
+            copingNoteSoFar = copingNoteSoFarPeriod(copingAppend)
+            redirectionNoteSoFar = redirectionNoteSoFarPeriod(redirectionAppend)
 
             note.innerHTML = 
             ` 
             <section class="button1 blue">
             <button class="add-button2 violet image" onclick="clipboard()">Copy note</button>
             <button class="add-button2 violet image" onclick="clipboard2()">Copy note (no date)</button>
+            <button class="add-button2 violet image" onclick="clipboard3()">Copy BISSP</button>
             </section>
             <p class="indigo"> 
             ${cDate} <br><br>
@@ -201,6 +214,24 @@ const append = id => {
             </p>
             <p class="bread"> 
             ${commentz}<br><br> 
+            </p>
+            <p class="red">
+            ${staringNoteSoFar}<br><br>
+            </p>
+            <p class="orange">
+            ${argumentNoteSoFar}<br><br>
+            </p>
+            <p class="yellow">
+            ${aggressionNoteSoFar}<br><br>
+            </p>
+            <p class="green">
+            ${controllingNoteSoFar}<br><br>
+            </p>
+            <p class="cyan">
+            ${copingNoteSoFar}<br><br>
+            </p>
+            <p class="sky">
+            ${redirectionNoteSoFar}<br><br>
             </p>
             `
             
@@ -254,12 +285,23 @@ ${behaviorz}
 
 ${commentz}
             `
+            summonedNote3 = `${staringNoteSoFar}
+            
+${argumentNoteSoFar}
+
+${aggressionNoteSoFar}
+
+${controllingNoteSoFar}
+
+${copingNoteSoFar}
+
+${redirectionNoteSoFar}`
             return summonedNote
         })
-        console.log(skillsz)
+        
     })
     .catch(err => console.log(err))
-    console.log(skillsz)
+
 }
 const clipboard = () => {
     navigator.clipboard.writeText(summonedNote)
@@ -267,6 +309,10 @@ const clipboard = () => {
 }
 const clipboard2 = () => {
     navigator.clipboard.writeText(summonedNote2)
+    alert("Copied the text")
+}
+const clipboard3 = () => {
+    navigator.clipboard.writeText(summonedNote3)
     alert("Copied the text")
 }
 
@@ -284,32 +330,50 @@ const getButtons = () => {
             if (elem.type === 'skill'){
                 ski.innerHTML += buttonCard
             }
-            if (elem.type === 'money'){
+            else if (elem.type === 'money'){
                 mon.innerHTML += buttonCard
             }
-            if (elem.type === 'appointment'){
+            else if (elem.type === 'appointment'){
                 app.innerHTML += buttonCard
             }
-            if (elem.type === 'integration'){
+            else if (elem.type === 'integration'){
                 int.innerHTML += buttonCard
             }
-            if (elem.type === 'preferred'){
+            else if (elem.type === 'preferred'){
                 pref.innerHTML += buttonCard
             }
-            if (elem.type === 'activity'){
+            else if (elem.type === 'activity'){
                 act.innerHTML += buttonCard
             }
-            if (elem.type === 'food'){
+            else if (elem.type === 'food'){
                 phood.innerHTML += buttonCard
             }
-            if (elem.type === 'meal'){
+            else if (elem.type === 'meal'){
                 meal.innerHTML += buttonCard
             }
-            if (elem.type === 'behavior'){
+            else if (elem.type === 'behavior'){
                 beh.innerHTML += buttonCard
             }
-            if (elem.type === 'comment'){
+            else if (elem.type === 'comment'){
                 comm.innerHTML += buttonCard
+            }
+            else if (elem.type === 'staring'){
+                staring.innerHTML += buttonCard
+            }
+            else if (elem.type === 'argument'){
+                argument.innerHTML += buttonCard
+            }
+            else if (elem.type === 'aggression'){
+                aggression.innerHTML += buttonCard
+            }
+            else if (elem.type === 'controlling'){
+                controlling.innerHTML += buttonCard
+            }
+            else if (elem.type === 'coping'){
+                coping.innerHTML += buttonCard
+            }
+            else if (elem.type === 'redirection'){
+                redirection.innerHTML += buttonCard
             }
             
         })
@@ -419,6 +483,36 @@ const commentzPeriod = sectionText =>{
     commentz = allInOnePeriod(commentz, sectionText)
     console.log(commentz)
     return commentz
+}
+const staringNoteSoFarPeriod = sectionText =>{
+    staringNoteSoFar = allInOnePeriod(staringNoteSoFar, sectionText)
+    console.log(staringNoteSoFar)
+    return staringNoteSoFar
+}
+const argumentNoteSoFarPeriod = sectionText =>{
+    argumentNoteSoFar = allInOnePeriod(argumentNoteSoFar, sectionText)
+    console.log(argumentNoteSoFar)
+    return argumentNoteSoFar
+}
+const aggressionNoteSoFarPeriod = sectionText =>{
+    aggressionNoteSoFar = allInOnePeriod(aggressionNoteSoFar, sectionText)
+    console.log(aggressionNoteSoFar)
+    return aggressionNoteSoFar
+}
+const controllingNoteSoFarPeriod = sectionText =>{
+    controllingNoteSoFar = allInOnePeriod(controllingNoteSoFar, sectionText)
+    console.log(controllingNoteSoFar)
+    return controllingNoteSoFar
+}
+const copingNoteSoFarPeriod = sectionText =>{
+    copingNoteSoFar = allInOnePeriod(copingNoteSoFar, sectionText)
+    console.log(copingNoteSoFar)
+    return copingNoteSoFar
+}
+const redirectionNoteSoFarPeriod = sectionText =>{
+    redirectionNoteSoFar = allInOnePeriod(redirectionNoteSoFar, sectionText)
+    console.log(redirectionNoteSoFar)
+    return redirectionNoteSoFar
 }
 
 getButtons()
