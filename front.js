@@ -12,6 +12,12 @@ const food = document.querySelector('#food')
 const mealPlan = document.querySelector('#meal-plan')
 const behavior = document.querySelector('#behaviors')
 const comment = document.querySelector('#comment')
+const staringInput = document.querySelector('#staring-input')
+const argumentInput = document.querySelector('#argument-input')
+const aggressionInput = document.querySelector('#aggression-input')
+const controllingInput = document.querySelector('#controlling-input')
+const copingInput = document.querySelector('#coping-input')
+const redirectionInput = document.querySelector('#redirection-input')
 const note = document.querySelector("#note")
 const buttonList = document.querySelector('#buttonList')
 const ski = document.querySelector('#ski')
@@ -24,8 +30,20 @@ const phood = document.querySelector('#phood')
 const meal = document.querySelector('#mealButtons')
 const beh = document.querySelector('#beh')
 const comm = document.querySelector('#comm')
+const staring = document.querySelector('#staring')
+const argument = document.querySelector('#argument')
+const aggression = document.querySelector('#aggression')
+const controlling = document.querySelector('#controlling')
+const coping = document.querySelector('#coping')
+const redirection = document.querySelector('#redirection')
 const buttonCard = document.querySelector('#button-card')
 
+let redirectionNoteSoFar = ''
+let copingNoteSoFar = ''
+let controllingNoteSoFar = ''
+let aggressionNoteSoFar = ''
+let argumentNoteSoFar = ''
+let staringNoteSoFar = ''
 let commentz = ''
 let behaviorz = ''
 let mealPlanz = ''
@@ -74,6 +92,13 @@ function handleSubmit(e) {
         mealPlan: mealPlan.value,
         behavior: behavior.value,
         comment: comment.value,
+        staring: staringInput.value,
+        argument: argumentInput.value,
+        aggression: aggressionInput.value,
+        controlling: controllingInput.value,
+        coping: copingInput.value,
+        redirection: redirectionInput.value
+
     }
 
     axios.post('http://localhost:4004/button', body)
@@ -92,7 +117,13 @@ function handleSubmit(e) {
             mealPlan.value = ''
             behavior.value = ''
             comment.value = ''
-
+            staringInput.value = ''
+            argumentInput.value = ''
+            aggressionInput.value = ''
+            controllingInput.value = ''
+            copingInput.value = ''
+            redirectionInput.value = ''
+            
             alert('button received')
         })
 }

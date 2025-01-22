@@ -62,6 +62,13 @@ module.exports = {
         let {mealPlan} = req.body
         let {behavior} = req.body
         let {comment} = req.body
+        let {staring} = req.body
+        let {argument} = req.body
+        let {aggression} = req.body
+        let {controlling} = req.body
+        let {coping} = req.body
+        let {redirection} = req.body
+
         name = addEscape(name)
         skills = addEscape(skills)
         money = addEscape(money)
@@ -77,7 +84,7 @@ module.exports = {
         console.log("before then block")
         sequelize.query(`
             INSERT INTO buttons (type, name, image, skill, money, appointment, integration, preferred, interaction, activity, food, mealPlan, behavior, comment, staring, argument, aggression, controlling, coping, redirection)
-            VALUES ('${type}','${name}','${image}','${skills}','${money}','${appointments}','${integration}','${preferred}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}','','','','','','') `).then(dbRes => res.sendStatus(200))
+            VALUES ('${type}','${name}','${image}','${skills}','${money}','${appointments}','${integration}','${preferred}','${interaction}','${activities}','${food}','${mealPlan}','${behavior}','${comment}','${staring}','${argument}','${aggression}','${controlling}','${coping}','${redirection}') `).then(dbRes => res.sendStatus(200))
         .catch(err => console.log('error with sending to DB', err))
     },
     getButtons: (req, res) => {
