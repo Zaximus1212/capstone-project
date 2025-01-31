@@ -12,6 +12,7 @@ app.post('/seed', seed)
 app.post('/button', createButton)
 app.get('/buttons', getButtons)
 app.get('/writing/:id', append)
+// app.put('update/:id', buttonUpdate)
 
 
 

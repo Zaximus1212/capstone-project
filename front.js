@@ -131,8 +131,8 @@ function handleSubmit(e) {
 const append = id => {
     axios.get(`http://localhost:4004/writing/${id}`)
     .then(res => {
-        res.data.forEach(elem => {
-        
+        const elem = res.data
+            
             const skillz = elem.skill
             const money = elem.money
             const appointments = elem.appointment
@@ -297,7 +297,7 @@ ${copingNoteSoFar}
 
 ${redirectionNoteSoFar}`
             return summonedNote
-        })
+        
         
     })
     .catch(err => console.log(err))
