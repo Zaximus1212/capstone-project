@@ -2,7 +2,7 @@ require("dotenv").config();
 // const {CONNECTION_STRING} = process.env
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize(`original-notes`, "root", "ashiatsu", {
+const sequelize = new Sequelize(`notes`, "root", "ashiatsu", {
     host: 'localhost',
     dialect: 'mysql',
     port:3306,
