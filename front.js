@@ -1,17 +1,17 @@
 const form = document.querySelector('form')
 const nameInput = document.querySelector('#name-input')
-const image = document.querySelector('#picture-input')
-const skills = document.querySelector('#skills')
-const money = document.querySelector('#money-management')
-const appointments = document.querySelector('#appointments')
-const integration = document.querySelector('#community-integration')
-const preferred = document.querySelector('#preferred')
-const interaction = document.querySelector('#interaction')
-const activities = document.querySelector('#activities')
-const food = document.querySelector('#food')
-const mealPlan = document.querySelector('#meal-plan')
-const behavior = document.querySelector('#behaviors')
-const comment = document.querySelector('#comment')
+const imageInput = document.querySelector('#picture-input')
+const skillsInput = document.querySelector('#skills')
+const moneyInput = document.querySelector('#money-management')
+const appointmentsInput = document.querySelector('#appointments')
+const integrationInput = document.querySelector('#community-integration')
+const preferredInput = document.querySelector('#preferred')
+const interactionInput = document.querySelector('#interaction')
+const activitiesInput = document.querySelector('#activities')
+const foodInput = document.querySelector('#food')
+const mealPlanInput = document.querySelector('#meal-plan')
+const behaviorInput = document.querySelector('#behaviors')
+const commentInput = document.querySelector('#comment')
 const staringInput = document.querySelector('#staring-input')
 const argumentInput = document.querySelector('#argument-input')
 const aggressionInput = document.querySelector('#aggression-input')
@@ -37,6 +37,7 @@ const controlling = document.querySelector('#controlling')
 const coping = document.querySelector('#coping')
 const redirection = document.querySelector('#redirection')
 const buttonCard = document.querySelector('#button-card')
+const updateButtonButton = document.querySelector('#update')
 
 let redirectionNoteSoFar = ''
 let copingNoteSoFar = ''
@@ -58,7 +59,7 @@ let skillsz = ''
 let summonedNote = ''
 let summonedNote2 = ''
 let summonedNote3 = ''
-
+let updateBoolean = false
 
 let currentDate = new Date()
 let cDay = currentDate.getDate()
@@ -81,18 +82,18 @@ function handleSubmit(e) {
     let body = {
         type: type, 
         name: nameInput.value,
-        image: image.value,
-        skills: skills.value,
-        money: money.value,
-        appointments: appointments.value,
-        integration: integration.value,
-        preferred: preferred.value,
-        interaction: interaction.value,
-        activities: activities.value,
-        food: food.value,
-        mealPlan: mealPlan.value,
-        behavior: behavior.value,
-        comment: comment.value,
+        image: imageInput.value,
+        skills: skillsInput.value,
+        money: moneyInput.value,
+        appointment: appointmentsInput.value,
+        integration: integrationInput.value,
+        preferred: preferredInput.value,
+        interaction: interactionInput.value,
+        activity: activitiesInput.value,
+        food: foodInput.value,
+        mealPlan: mealPlanInput.value,
+        behavior: behaviorInput.value,
+        comment: commentInput.value,
         staring: staringInput.value,
         argument: argumentInput.value,
         aggression: aggressionInput.value,
@@ -106,18 +107,18 @@ function handleSubmit(e) {
         .then(() => {
             console.log('button received')
             nameInput.value = ''
-            image.value = ''
-            skills.value = ''
-            money.value = ''
-            appointments.value = ''
-            integration.value = ''
-            preferred.value = ''
-            interaction.value = ''
-            activities.value = ''
-            food.value = ''
-            mealPlan.value = ''
-            behavior.value = ''
-            comment.value = ''
+            imageInput.value = ''
+            skillsInput.value = ''
+            moneyInput.value = ''
+            appointmentsInput.value = ''
+            integrationInput.value = ''
+            preferredInput.value = ''
+            interactionInput.value = ''
+            activitiesInput.value = ''
+            foodInput.value = ''
+            mealPlanInput.value = ''
+            behaviorInput.value = ''
+            commentInput.value = ''
             staringInput.value = ''
             argumentInput.value = ''
             aggressionInput.value = ''
@@ -150,7 +151,8 @@ const append = id => {
             const controllingAppend = elem.controlling
             const copingAppend = elem.coping
             const redirectionAppend = elem.redirection
-            
+            // console.log(updateBoolean)
+            if(!updateBoolean){
             skillsz = skillszPeriod(skillz)
             moneyz = moneyzPeriod(money)
             appointmentsz = appointmentszPeriod(appointments)
@@ -299,7 +301,29 @@ ${redirectionNoteSoFar}`
             return summonedNote
         
         
-    })
+    } else {
+            nameInput.value = ''
+            imageInput.value = ''
+            skillsInput.value = skillz
+            moneyInput.value = elem.money
+            appointmentsInput.value = elem.appointment
+            integrationInput.value = elem.integration
+            preferredInput.value = elem.preferred
+            interactionInput.value = elem.interaction
+            activitiesInput.value = elem.activity
+            foodInput.value = elem.food
+            mealPlanInput.value = meal
+            behaviorInput.value = elem.behavior
+            commentInput.value = elem.comment
+            staringInput.value = staringAppend
+            argumentInput.value = argumentAppend
+            aggressionInput.value = aggressionAppend
+            controllingInput.value = controllingAppend
+            copingInput.value = copingAppend
+            redirectionInput.value = redirectionAppend
+    }
+
+})
     .catch(err => console.log(err))
 
 }
@@ -514,6 +538,13 @@ const redirectionNoteSoFarPeriod = sectionText =>{
     console.log(redirectionNoteSoFar)
     return redirectionNoteSoFar
 }
+
+const activateUpdate = () =>{
+    updateBoolean = true
+    console.log(updateBoolean)
+}
+
+updateButtonButton.addEventListener('click', activateUpdate)
 
 getButtons()
 form.addEventListener('submit', handleSubmit)

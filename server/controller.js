@@ -158,13 +158,17 @@ module.exports = {
                 redirection = ${redirection}
             WHERE 
                 buttonId = ${id}
-            `)
+            `).then(dbRes => {
+                res.status(200).send(dbRes[0])
+            })
+            .catch(err => console.log('error with request from DB', err))
     },
     preUpdateGetButton: (req, res) => {
         const { id } = req.params
         sequelize.query('SELECT * FROM buttons WHERE buttonId = :id', {
             replacements: { id },
             type: sequelize.QueryTypes.SELECT
-        })
+        }).then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log('error getting all the data', err))
     }
 }
