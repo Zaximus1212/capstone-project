@@ -38,6 +38,7 @@ const coping = document.querySelector('#coping')
 const redirection = document.querySelector('#redirection')
 const buttonCard = document.querySelector('#button-card')
 const updateButtonButton = document.querySelector('#update')
+const updateDB = document.querySelector('#update-DB')
 
 let redirectionNoteSoFar = ''
 let copingNoteSoFar = ''
@@ -67,7 +68,7 @@ let cMonth = currentDate.getMonth() + 1
 let cYear = currentDate.getFullYear()
 let cDate = `${cMonth}/${cDay}/${cYear}`
 
-function handleSubmit(e) {
+function createButton(e) {
     e.preventDefault()
     let type = document.querySelector('input[name="type-button"]:checked').value
     if (type === 'choose'){
@@ -301,9 +302,9 @@ ${redirectionNoteSoFar}`
             return summonedNote
         
         
-    } else {
-            nameInput.value = ''
-            imageInput.value = ''
+    } else { // occurs if updateBoolean is true
+            nameInput.value = id //TEMP using name spot to save the id for the update query to the DB
+            imageInput.value = elem.image
             skillsInput.value = skillz
             moneyInput.value = elem.money
             appointmentsInput.value = elem.appointment
@@ -327,6 +328,59 @@ ${redirectionNoteSoFar}`
     .catch(err => console.log(err))
 
 }
+const buttonUpdate = event =>{
+    if(!updateBoolean)
+        return alert('switch to update mode to update a button')
+
+    const body = {
+        buttonId: nameInput.value,
+        image: imageInput.value,
+        skill: skillsInput.value,
+        money: moneyInput.value,
+        appointment: appointmentsInput.value,
+        integration: integrationInput.value,
+        preferred: preferredInput.value,
+        interaction: interactionInput.value,
+        activity: activitiesInput.value,
+        food: foodInput.value,
+        mealPlan: mealPlanInput.value,
+        behavior: behaviorInput.value,
+        comment: commentInput.value,
+        staring: staringInput.value,
+        argument: argumentInput.value,
+        aggression: aggressionInput.value,
+        controlling: controllingInput.value,
+        coping: copingInput.value,
+        redirection: redirectionInput.value
+    }
+    const buttonId = nameInput.value
+
+    axios.put(`http://localhost:4004/update/${buttonId}`, body)
+    .then(() => {
+        nameInput.value = ''
+        imageInput.value = ''
+        skillsInput.value = ''
+        moneyInput.value = ''
+        appointmentsInput.value = ''
+        integrationInput.value = ''
+        preferredInput.value = ''
+        interactionInput.value = ''
+        activitiesInput.value = ''
+        foodInput.value = ''
+        mealPlanInput.value = ''
+        behaviorInput.value = ''
+        commentInput.value = ''
+        staringInput.value = ''
+        argumentInput.value = ''
+        aggressionInput.value = ''
+        controllingInput.value = ''
+        copingInput.value = ''
+        redirectionInput.value = ''
+
+        alert('button updated')
+    })
+}
+
 const clipboard = () => {
     navigator.clipboard.writeText(summonedNote)
     alert("Copied the text")
@@ -404,7 +458,6 @@ const getButtons = () => {
     })
 }
 
-
 const writerPeriod = arr => {
     if(arr[0] !== '' && arr[0] !== '. ' ){
         arr[1] = arr[1].charAt(0).toUpperCase() + arr[1].slice(1, arr[1].length)
@@ -435,8 +488,6 @@ const arrPusher = (orig, added) => {
 const allInOnePeriod = (str1, str2) => {
     return writerPeriod(arrPusher(retToArr(str1), str2))
 }
-
-
 const skillszPeriod = sectionText =>{
     skillsz = allInOnePeriod(skillsz, sectionText)
     console.log(skillsz)
@@ -540,11 +591,34 @@ const redirectionNoteSoFarPeriod = sectionText =>{
 }
 
 const activateUpdate = () =>{
-    updateBoolean = true
+    if(!updateBoolean)
+        updateBoolean = true
+    else{
+        updateBoolean = false
+        skillsInput.value = ''
+        moneyInput.value = ''
+        appointmentsInput.value = ''
+        integrationInput.value = ''
+        preferredInput.value = ''
+        interactionInput.value = ''
+        activitiesInput.value = ''
+        foodInput.value = ''
+        mealPlanInput.value = ''
+        behaviorInput.value = ''
+        commentInput.value = ''
+        staringInput.value = ''
+        argumentInput.value = ''
+        aggressionInput.value = ''
+        controllingInput.value = ''
+        copingInput.value = ''
+        redirectionInput.value = ''
+    }
     console.log(updateBoolean)
 }
 
 updateButtonButton.addEventListener('click', activateUpdate)
+updateDB.addEventListener('click', buttonUpdate)
 
 getButtons()
-form.addEventListener('submit', handleSubmit)
+
+form.addEventListener('submit', createButton)

@@ -110,65 +110,32 @@ module.exports = {
         })
     })
     .catch(err => console.log('error getting all the data', err))
-    }
-    , buttonUpdate: (req,res) => {
-        const {id} = req.params
-        let {type} = req.params
-        let {name} = req.params
-        let {image} = req.params
-        let {skill} = req.params
-        let {money} = req.params
-        let {appointment} = req.params
-        let {integration} = req.params
-        let {preferred} = req.params
-        let {interaction} = req.params
-        let {activity} = req.params
-        let {food} = req.params
-        let {mealPlan} = req.params
-        let {behavior} = req.params
-        let {comment} = req.params
-        let {staring} = req.params
-        let {argument} = req.params
-        let {aggression} = req.params
-        let {controlling} = req.params
-        let {coping} = req.params
-        let {redirection} = req.params
+    }, 
+    buttonUpdate: (req,res) => {
+        const {buttonId} = req.body
+        let {image} = req.body
+        let {skill} = req.body
+        let {money} = req.body
+        let {appointment} = req.body
+        let {integration} = req.body
+        let {preferred} = req.body
+        let {interaction} = req.body
+        let {activity} = req.body
+        let {food} = req.body
+        let {mealPlan} = req.body
+        let {behavior} = req.body
+        let {comment} = req.body
+        let {staring} = req.body
+        let {argument} = req.body
+        let {aggression} = req.body
+        let {controlling} = req.body
+        let {coping} = req.body
+        let {redirection} = req.body
         sequelize.query(`
-            UPDATE buttons
-            SET 
-                type = ${type},
-                name = ${name},
-                image = ${image},
-                skill = ${skill},
-                money = ${money},
-                appointment = ${appointment},
-                integration = ${integration},
-                preferred = ${preferred},
-                interaction = ${interaction},
-                activity = ${activity},
-                food = ${food},
-                mealPlan = ${mealPlan},
-                behavior = ${behavior},
-                comment = ${comment},
-                staring = ${staring},
-                argument = ${argument},
-                aggression = ${aggression},
-                controlling = ${controlling},
-                coping = ${coping},
-                redirection = ${redirection}
-            WHERE 
-                buttonId = ${id}
+            UPDATE buttons SET image = '${image}', skill = '${skill}', money = '${money}', appointment = '${appointment}', integration = '${integration}', preferred = '${preferred}', interaction = '${interaction}', activity = '${activity}', food = '${food}', mealPlan = '${mealPlan}', behavior = '${behavior}', comment = '${comment}', staring = '${staring}', argument = '${argument}', aggression = '${aggression}', controlling = '${controlling}', coping = '${coping}', redirection = '${redirection}' WHERE buttonId = ${buttonId}
             `).then(dbRes => {
                 res.status(200).send(dbRes[0])
             })
             .catch(err => console.log('error with request from DB', err))
-    },
-    preUpdateGetButton: (req, res) => {
-        const { id } = req.params
-        sequelize.query('SELECT * FROM buttons WHERE buttonId = :id', {
-            replacements: { id },
-            type: sequelize.QueryTypes.SELECT
-        }).then(dbRes => res.status(200).send(dbRes[0]))
-        .catch(err => console.log('error getting all the data', err))
     }
 }
