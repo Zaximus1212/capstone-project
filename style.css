@@ -131,3 +131,6 @@ input {
     background-color: rgb(183, 248, 226);
     margin: 10px;
 }
+.update {
+    color: red;
+}

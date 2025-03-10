@@ -39,6 +39,7 @@ const redirection = document.querySelector('#redirection')
 const buttonCard = document.querySelector('#button-card')
 const updateButtonButton = document.querySelector('#update')
 const updateDB = document.querySelector('#update-DB')
+const titleSection = document.querySelector('#title-section')
 
 let redirectionNoteSoFar = ''
 let copingNoteSoFar = ''
@@ -591,10 +592,13 @@ const redirectionNoteSoFarPeriod = sectionText =>{
 }
 
 const activateUpdate = () =>{
+    // const updateNotice = '<section class = "update" id = "update-mode"> UPDATE MODE </section>'
     if(!updateBoolean)
         updateBoolean = true
     else{
         updateBoolean = false
+        nameInput.value = '';
+        imageInput.value = '';
         skillsInput.value = ''
         moneyInput.value = ''
         appointmentsInput.value = ''
@@ -612,6 +616,7 @@ const activateUpdate = () =>{
         controllingInput.value = ''
         copingInput.value = ''
         redirectionInput.value = ''
+        // titleSection += updateNotice
     }
     console.log(updateBoolean)
 }

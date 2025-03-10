@@ -15,6 +15,7 @@ const sequelize = new Sequelize(`notes`, "root", "ashiatsu", {
 })
 
 const addEscape = str =>{
+    if(str == undefined) return '';
     str = str.trim().replaceAll("'", "''")
     return str
 }
